@@ -1,0 +1,93 @@
+///////////////////////////////////////////////////////////
+//  #   _grid.scss
+//      The grid system used throughout the site
+///////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////
+//  #   Container
+///////////////////////////////////////////////////////////
+
+.container
+{ 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    max-width: $grid-container-width;
+    width: 100%;
+    margin: 0 auto;
+
+    &.-center-v       { align-items: center; }
+    &.-center-h       { justify-content: center; }
+
+    &.-fluid { max-width: 100vw; }
+
+    &.-nowrap       { flex-wrap: nowrap; }
+}
+
+///////////////////////////////////////////////////////////
+//  #   Columns
+///////////////////////////////////////////////////////////
+
+.col
+{
+    width: 100%;
+    padding-left: $grid-gutter-size / 2;
+    padding-right: $grid-gutter-size / 2;
+}
+.col--half      { @extend .col; width: 50%; }
+.col--full      { @extend .col; width: 100%; }
+.col--third     { @extend .col; width: 33.3333333%; }
+
+///////////////////////////////////////////////////////////
+//  #   Offset Columns
+///////////////////////////////////////////////////////////
+
+// Create columns for grid
+@for $i from 1 through $grid-num-columns
+{
+    // Calc the percent for this col
+    $percent : percentage( (100 / ($grid-num-columns / $i) ) * 0.01 );
+
+    // Create each column
+    .col-#{$i}
+    {
+        @extend .col;
+        width: $percent;
+    }
+
+    // Create each column offset
+    .col-offset-#{$i}
+    { 
+        margin-left: $percent;
+    }
+}
+
+.col--offset-half      { @extend .col; margin-left: 50%; }
+.col--offset-full      { @extend .col; margin-left: 100%; }
+.col--offset-third     { @extend .col; margin-left: 33.3333333%; }
+
+
+///////////////////////////////////////////////////////////
+//  #  Breakpoint Columns
+///////////////////////////////////////////////////////////
+
+// Create responsive classes for each column
+@each $key, $value in $bp-classes
+{
+    @include breakpoint( $value )
+    {
+        @for $i from 1 through $grid-num-columns
+        {
+            // Calc the percent for this col
+            $percent : percentage( (100 / ($grid-num-columns / $i) ) * 0.01 );
+
+            .col-#{$key}-#{$i}
+            {
+                width: $percent;
+                padding-left: $grid-gutter-size / 2;
+                padding-right: $grid-gutter-size / 2;
+            }
+        }
+    }
+}
