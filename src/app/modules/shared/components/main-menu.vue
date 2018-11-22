@@ -1,7 +1,7 @@
 <template>
-    <div :class="[ 'wrapper', 'pad-4', { 'hidden' : !isShown }]" :style="bgStyleObject">
+    <div :class="[ 'wrapper', 'pad-4', { 'hidden' : !isShown }]" :style="bgStyleObject" v-if="content">
     	<div class="close" @click="onCloseClick($event)">Close</div>
-    	<div class="container -center-v -fluid pad-2-top" style="height:100vh">
+    	<div class="container -center-v -fluid" style="height:100vh">
     		<!-- Main menu -->
     		<div class="col-12 h-text-right" v-if="!isIndexShown">
 	    		<div class="pad-1-v" v-for="item in links" :key="item.label">
@@ -19,6 +19,13 @@
 	    			</div>
 	    		</div>
 	    	</div>
+    	</div>
+    	<div class="social container -fluid -align-right -nowrap pad-4-h pad-1-v">
+    		<div class="col h-text-right">
+    			<a class="social-link margin-1-left" :href="item.link.url" target="_blank" v-for="item in content.social_links">
+	    			<prismic-image :field="item.icon" />
+	    		</a>
+    		</div>
     	</div>
 	</div>
 </template>
@@ -202,12 +209,29 @@ export default
 
 .close
 {
-	position: absolute;
+	position: fixed;
 	top: 20px;
 	right: 40px;
 
 	font-weight: normal;
 	font-size: $font-size-base;
+}
+
+.social
+{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+.social-link img
+{
+	width: 40px;
+
+	&:hover
+	{
+		filter: invert(100%);
+	}
 }
 
 
