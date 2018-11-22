@@ -12,6 +12,7 @@ let routes = [];
 routes = routes.concat( require("@modules/home/routes.js") );
 routes = routes.concat( require("@modules/preview/routes.js") );
 routes = routes.concat( require("@modules/project/routes.js") );
+routes = routes.concat( require("@modules/about/routes.js") );
 
 // Create router instance
 let router = new VueRouter( { "routes" : routes } );
