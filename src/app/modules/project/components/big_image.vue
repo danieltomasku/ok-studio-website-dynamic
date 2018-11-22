@@ -1,8 +1,10 @@
 <template>
-    <div class="" :style=" 'background-color: '+content.backgroundcolor ">
+    <div class="">
     	<div class="container pad-4-v">
-    		<div class="col-12 h-text-center">
-	    		<prismic-rich-text :field="content.heading" />
+	    	<div class="container -nowrap">
+	    		<div class="col-12">
+	    			<prismic-image :field="content.primary.image" class="" />
+		    	</div>
 	    	</div>
     	</div>
 	</div>
@@ -31,11 +33,7 @@ export default
 	// 	...
 	///////////////////////////////////////////////////////
 
-	"mounted": function()
-	{
-		// console.log( this.$props.content );
-	},
-
+	"mounted": function(){},
 	"destroyed": function(){},
 
 	///////////////////////////////////////////////////////
