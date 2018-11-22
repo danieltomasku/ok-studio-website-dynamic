@@ -1,9 +1,12 @@
 <template>
     <div class="">
     	<div class="container pad-4-v">
-    		<div class="col-12 h-text-center">
-	    		<prismic-rich-text :field="content.heading" />
-	    		<prismic-rich-text :field="content.desc" class="pad-2-top" />
+	    	<div class="container -nowrap">
+	    		<div class="col-12">
+	    			<video autoplay="" muted="" loop="" playsinline="" preload="auto">
+				        <source class="" type="video/mp4" :src="content.primary.video.url">
+			      </video>
+		    	</div>
 	    	</div>
     	</div>
 	</div>
@@ -32,11 +35,7 @@ export default
 	// 	...
 	///////////////////////////////////////////////////////
 
-	"mounted": function()
-	{
-		console.log( this.$props.content );
-	},
-
+	"mounted": function(){},
 	"destroyed": function(){},
 
 	///////////////////////////////////////////////////////
