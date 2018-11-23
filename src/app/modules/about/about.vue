@@ -14,15 +14,12 @@
                     </span>
                 </div>
 
-
-
                 <component  class="margin-4-v"
                             v-for="(item, index) in content.body"
                             :is="componentTypeForContent( item )"
                             :content="item"
                             :key="index">
                 </component>
-
 
             </div>
         </div>
@@ -68,8 +65,7 @@ export default
         this.getContent();
     },
 
-    "mounted": function()
-    {},
+    "mounted": function(){},
 
     "destroyed": function(){},
 

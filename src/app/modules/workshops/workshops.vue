@@ -14,15 +14,12 @@
                     </span>
                 </div>
 
-
-
                 <component  class="margin-4-v"
                             v-for="(item, index) in content.body"
                             :is="componentTypeForContent( item )"
                             :content="item"
                             :key="index">
                 </component>
-
 
             </div>
         </div>
@@ -68,8 +65,7 @@ export default
         this.getContent();
     },
 
-    "mounted": function()
-    {},
+    "mounted": function(){},
 
     "destroyed": function(){},
 
@@ -97,8 +93,6 @@ export default
         // Returns the correct component for a slice type
         componentTypeForContent( item )
         {
-            console.log( item );
-
             if      ( item.slice_type == "column_component" )       return "column";
             else if ( item.slice_type == "pillar_component" )        return "pillar";
             else if ( item.slice_type == "two_column_two_row" )   return "two-col-two-row-text";
