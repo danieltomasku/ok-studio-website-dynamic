@@ -6,8 +6,7 @@
 	    	</div>
 	    	<div class="container -nowrap">
 	    		<div class="col" v-for=" item in content.items">
-	    			<h5>{{item.column_title}}</h5>
-	    			<prismic-rich-text :field="item.column_list" />
+	    			<prismic-rich-text :field="item.column_body" />
 	    		</div>
 	    	</div>
     	</div>
