@@ -145,8 +145,8 @@ export default
 			return [
 				{ "label" : "Home", 		"link" : "/" },
 				{ "label" : "Index", 		"link" : null },
-				{ "label" : "About", 		"link" : "/" },
-				{ "label" : "Workshops",	"link" : "/" },
+				{ "label" : "About", 		"link" : "/about-us" },
+				{ "label" : "Workshops",	"link" : "/workshops" },
 				{ "label" : "Shop", 		"link" : "/" },
 			];
 		},
