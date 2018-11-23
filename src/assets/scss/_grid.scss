@@ -19,6 +19,9 @@
 
     &.-center-v       { align-items: center; }
     &.-center-h       { justify-content: center; }
+    
+    &.-align-left     { align-items: flex-start; }
+    &.-align-right    { align-items: flex-end; }
 
     &.-fluid { max-width: 100vw; }
 
