@@ -5,14 +5,6 @@
         <div class="pad-5-v" v-if="content">
             <div class="container">
                 <h1 class="col-12">{{ content.hero_text[0].text }}</h1>
-                <div class="col-12" v-for="item in content.contact_info">
-                    <strong v-if="item.type == 'heading2'">
-                        {{ item.text }}
-                    </strong>
-                    <span v-if="item.type == 'paragraph'">
-                        {{ item.text }}
-                    </span>
-                </div>
 
                 <component  class="margin-4-v"
                             v-for="(item, index) in content.body"
@@ -83,7 +75,6 @@ export default
             .then( (response, error) =>
             {
                 // Print if error
-                console.log(response)
                 if( error ) console.error( error );
                 // Assign content
                 this.content = response.data;

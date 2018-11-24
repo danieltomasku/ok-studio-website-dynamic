@@ -5,7 +5,11 @@
         <div class="pad-5-v" v-if="content">
             <div class="container">
                 <h1 class="col-12">{{ content.hero_text[0].text }}</h1>
-                <div class="col-12" v-for="item in content.contact_info">
+                <div
+                    class="col-12"
+                    v-for="(item, index) in content.contact_info"
+                    :key="index + '-contact'"
+                >
                     <strong v-if="item.type == 'heading2'">
                         {{ item.text }}
                     </strong>
@@ -83,7 +87,6 @@ export default
             .then( (response, error) =>
             {
                 // Print if error
-                console.log(response)
                 if( error ) console.error( error );
                 // Assign content
                 this.content = response.data;
@@ -93,8 +96,6 @@ export default
         // Returns the correct component for a slice type
         componentTypeForContent( item )
         {
-            console.log( item );
-
             if      ( item.slice_type == "column_component" )       return "column";
             else if ( item.slice_type == "pillar_component" )        return "pillar";
             else if ( item.slice_type == "two_column_two_row" )   return "two-col-two-row-text";
