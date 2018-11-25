@@ -147,7 +147,7 @@ export default
 				{ "label" : "Index", 		"link" : null },
 				{ "label" : "About", 		"link" : "/about-us" },
 				{ "label" : "Workshops",	"link" : "/workshops" },
-				{ "label" : "Shop", 		"link" : "/" },
+				{ "label" : "Shop", 		"link" : "/shop" },
 			];
 		},
 
