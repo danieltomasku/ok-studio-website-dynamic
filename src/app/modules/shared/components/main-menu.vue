@@ -11,9 +11,9 @@
 	    	<!-- Index menu -->
 	    	<div class="col-12 h-text-center" v-if="isIndexShown">
 	    		<div class="pad-1-v" v-for="item in indexLinks" :key="item.label">
-	    			<div class="menu--link" 
+	    			<div class="menu--link"
 	    					@click="onLinkClick(item)"
-	    					@mouseover="onIndexMouseover(item)" @mouseout="onIndexMouseout(item)" 
+	    					@mouseover="onIndexMouseover(item)" @mouseout="onIndexMouseout(item)"
 	    					>
 	    				{{ item.label }}
 	    			</div>
@@ -66,24 +66,24 @@ export default
 	// 	...
 	///////////////////////////////////////////////////////
 
-	"methods" : 
+	"methods" :
 	{
 		///////////////////////////////////////////////////////
 		// 	Methods
 		///////////////////////////////////////////////////////
 
 		// Shows the memu
-		show () 
-		{ 
-			this.isShown = true; 
-			this.isIndexShown = false; 
+		show ()
+		{
+			this.isShown = true;
+			this.isIndexShown = false;
 		},
 
 		// Shows the memu
 		hide ()
-		{ 
-			this.isShown = false; 
-			this.isIndexShown = false; 
+		{
+			this.isShown = false;
+			this.isIndexShown = false;
 		},
 
 		// Shows the index menu
@@ -92,7 +92,7 @@ export default
 		// Shows the memu
 		hideIndex () { this.isIndexShown = false; },
 
-		// 
+		//
 		onIndexMouseover (item)
 		{
 			this.backgroundImage = item.image;
@@ -110,15 +110,15 @@ export default
 
 		// on close button click
 		onCloseClick( event )
-		{ 
-			// 
+		{
+			//
 			if( this.isIndexShown ) this.isIndexShown = false;
-			else this.isShown = false; 
+			else this.isShown = false;
 		},
 
 		// on link button click
 		onLinkClick( item )
-		{ 
+		{
 			// Handle index
 			if( item.label == "Index" )
 			{
@@ -134,19 +134,19 @@ export default
 		},
 	},
 
-	// 
-	"computed" : 
+	//
+	"computed" :
 	{
 		content () { return this.$store.state.menu; },
 
 		// Links used for the main menu
-		links () 
+		links ()
 		{
 			return [
 				{ "label" : "Home", 		"link" : "/" },
 				{ "label" : "Index", 		"link" : null },
-				{ "label" : "About", 		"link" : "/" },
-				{ "label" : "Workshops",	"link" : "/" },
+				{ "label" : "About", 		"link" : "/about-us" },
+				{ "label" : "Workshops",	"link" : "/workshops" },
 				{ "label" : "Shop", 		"link" : "/" },
 			];
 		},
@@ -157,17 +157,17 @@ export default
 			// Bail if not loaded
 			if( !this.content ) return;
 			// Reformat index links from store
-			return _.map( this.content.index, item => 
+			return _.map( this.content.index, item =>
 			{
-				return { "label" : item.project.data.project_title[0].text, 
+				return { "label" : item.project.data.project_title[0].text,
 						"link" : `/project/${item.project.uid}`,
 						"image" : item.project.data.hero_image.url
 					};
 			});
 		},
 
-		// 
-		bgStyleObject () 
+		//
+		bgStyleObject ()
 		{
 			return {
 				"background-image" : ( this.backgroundImage ) ? `url('${this.backgroundImage}')` : "none",

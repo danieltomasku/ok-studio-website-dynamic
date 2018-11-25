@@ -13,8 +13,8 @@
 
             <component  class="margin-4-v"
                         v-for="(item, index) in content.body"
-                        :is="componentTypeForContent( item )" 
-                        :content="item" 
+                        :is="componentTypeForContent( item )"
+                        :content="item"
                         :key="index">
                         </component>
 
@@ -37,17 +37,17 @@
 
 export default
 {
-    "components": 
+    "components":
     {
         "main-header"   : require("@modules/shared/components/main-header.vue").default,
         "main-footer"   : require("@modules/shared/components/main-footer.vue").default,
 
-        "column"        : require("./components/column.vue").default,
+        "column"        : require("@modules/shared/components/column.vue").default,
         "two-col-text"  : require("./components/two_col_text.vue").default,
         "two-col-two-row-text" : require("./components/two_col_two_row_text.vue").default,
         "video-player"  : require("./components/video.vue").default,
         "big-image"     : require("./components/big_image.vue").default,
-        "carousel"     : require("./components/carousel.vue").default,        
+        "carousel"     : require("./components/carousel.vue").default,
     },
 
     ///////////////////////////////////////////////////////
@@ -59,10 +59,10 @@ export default
         return { "content" : null };
     },
     "props" : ["id"],
-    "watch" : 
+    "watch" :
     {
         // Watch for changes on ID prop
-        id ( value) 
+        id ( value)
         {
             // Reload content
             this.getContent();
@@ -75,7 +75,7 @@ export default
 
     "created": function()
     {
-        
+
     },
 
     "mounted": function()
@@ -90,14 +90,14 @@ export default
     //  ...
     ///////////////////////////////////////////////////////
 
-    "methods" : 
+    "methods" :
     {
         getContent ()
         {
             // Get article
             this.$prismic.client.getByUID('project', this.$props.id, { 'fetchLinks': ['project.project_title', 'project.carousel_image'] } )
             // Handle article
-            .then( (response, error) => 
+            .then( (response, error) =>
             {
                 // Print if error
                 if( error ) console.error(  error );
@@ -105,11 +105,11 @@ export default
                 this.content = response.data;
                 console.log( this.content );
             });
-        }, 
+        },
 
         // Returns the correct component for a slice type
         componentTypeForContent( item )
-        { 
+        {
             console.log( item.slice_type, item );
 
             if      ( item.slice_type == "column_component" )       return "column";
@@ -140,7 +140,7 @@ export default
     & > div
     {
         background: rgba( 255, 255, 100, 0.25 );
-        border: 1px solid rgba( 0,0,0, 0.25 );   
+        border: 1px solid rgba( 0,0,0, 0.25 );
     }
 }
 

@@ -2,24 +2,19 @@
     <div class="">
         <main-header></main-header>
 
-        <div class="container pad-5-v">
-            <div class="col-4 pad-1-bottom" v-if="content">
-                <router-link    v-for="item in content.carousel_items" :key="item.uid"
-                                :to=" '/project/'+item.home_carousel_item.uid "
-                                class="pad-1-top"
-                                >
-                    {{ $prismic.richTextAsPlain(item.home_carousel_item.data.project_title) }}
-                    <prismic-image :field="item.home_carousel_item.data.carousel_image" />
-                </router-link>
-            </div>
-            <h1 class="col-12 h-text-center pad-12-h pad-5-v">
-                OK Studio is a no bullshit, independent creative practice based in Portland, Oregon.
-            </h1>
-            <div class="col-12 h-text-center pad-2-top" v-if="content">
-                <a :href=" 'mailto:' + content.contact_email ">{{ content.contact_text }}</a>
+        <div class="pad-5-v" v-if="content">
+            <div class="container">
+                <h1 class="col-12">{{ content.hero_text[0].text }}</h1>
+
+                <component  class="margin-4-v"
+                            v-for="(item, index) in content.body"
+                            :is="componentTypeForContent( item )"
+                            :content="item"
+                            :key="index">
+                </component>
+
             </div>
         </div>
-
 
         <main-footer></main-footer>
     </div>
@@ -35,6 +30,10 @@ export default
     {
         "main-header"   : require("@modules/shared/components/main-header.vue").default,
         "main-footer"   : require("@modules/shared/components/main-footer.vue").default,
+
+        "column"       : require("@modules/shared/components/column.vue").default,
+        "pillar"       : require("@modules/shared/components/pillar.vue").default,
+
     },
 
     ///////////////////////////////////////////////////////
@@ -43,11 +42,9 @@ export default
 
     data ()
     {
-        return {
-            "content" : null,
-        };
+        return { "content" : null };
     },
-    "props" : [""],
+    "props" : ["id"],
     "watch" : {},
 
     ///////////////////////////////////////////////////////
@@ -60,8 +57,7 @@ export default
         this.getContent();
     },
 
-    "mounted": function()
-    {},
+    "mounted": function(){},
 
     "destroyed": function(){},
 
@@ -74,7 +70,7 @@ export default
         getContent ()
         {
             // Get content from prismic API
-            this.$prismic.client.getSingle( 'homepage', { 'fetchLinks': ['project.project_title', 'project.carousel_image'] } )
+            this.$prismic.client.getSingle( 'workshops' )
             // Handle response
             .then( (response, error) =>
             {
@@ -83,6 +79,14 @@ export default
                 // Assign content
                 this.content = response.data;
             });
+        },
+
+        // Returns the correct component for a slice type
+        componentTypeForContent( item )
+        {
+            if      ( item.slice_type == "column_component" )       return "column";
+            else if ( item.slice_type == "pillar_component" )        return "pillar";
+            else if ( item.slice_type == "two_column_two_row" )   return "two-col-two-row-text";
         },
     },
     "computed" : {},
