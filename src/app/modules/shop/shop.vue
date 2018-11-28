@@ -104,16 +104,5 @@ export default
 //  ...
 ///////////////////////////////////////////////////////////
 
-#demo_grid .container
-{
-    border: 1px solid rgba( 0,0,0, 0.25 );
-
-    & > div
-    {
-        background: rgba( 255, 255, 100, 0.25 );
-        border: 1px solid rgba( 0,0,0, 0.25 );
-    }
-}
-
 
 </style>

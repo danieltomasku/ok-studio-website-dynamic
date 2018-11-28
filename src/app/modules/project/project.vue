@@ -103,14 +103,13 @@ export default
                 if( error ) console.error(  error );
                 // Assign articles
                 this.content = response.data;
-                console.log( this.content );
             });
         },
 
         // Returns the correct component for a slice type
         componentTypeForContent( item )
         {
-            console.log( item.slice_type, item );
+            // console.log( item.slice_type, item );
 
             if      ( item.slice_type == "column_component" )       return "column";
             else if ( item.slice_type == "two_column_text" )        return "two-col-text";
@@ -132,17 +131,6 @@ export default
 ///////////////////////////////////////////////////////////
 //  ...
 ///////////////////////////////////////////////////////////
-
-#demo_grid .container
-{
-    border: 1px solid rgba( 0,0,0, 0.25 );
-
-    & > div
-    {
-        background: rgba( 255, 255, 100, 0.25 );
-        border: 1px solid rgba( 0,0,0, 0.25 );
-    }
-}
 
 
 </style>
