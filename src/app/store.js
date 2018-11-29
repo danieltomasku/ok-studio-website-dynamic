@@ -43,7 +43,6 @@ module.exports = new Vuex.Store
 	                if( error ) console.error( error );
 	                // Assign content
 	                state.menu = response.data;
-	                console.log( state.menu )
 	            })
 	            prismic.client.getSingle('footer')
 	            .then( (response, error) => 

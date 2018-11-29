@@ -3,18 +3,14 @@
  * https://prismic.io/docs/vuejs/beyond-the-api/link-resolving
  */
 
-export default function (doc) {
-  if (doc.isBroken) {
-    return '/#/not-found'
-  }
+export default function (doc) 
+{
+  if (doc.isBroken)           return `/#/`;
+  else if (doc.type === 'homepage') return `/#/`;
+  else if (doc.type === 'project')  return `/#/project/${doc.uid}`;
+  else if (doc.type === 'about')    return `/#/about-us/`;
+  else if (doc.type === 'workshops')  return `/#/workshops/`;
+  else if (doc.type === 'shop')     return `/#/shop/`;
 
-  if (doc.type === 'home') {
-    return '/'
-  }
-
-  if (doc.type === 'project') {
-    return '/#/project/' + doc.uid
-  }
-
-  return '/#/not-found'
+  else return `/#/`;
 }
