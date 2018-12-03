@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <header class="container">
     	<div class="col-6">
 	    	<router-link to="/">OK</router-link>
 	    </div>
@@ -7,7 +7,7 @@
 	    	<a @click="onMenuClick($event)">Menu</a>
 	    </div>
 	    <main-menu ref="menu"></main-menu>
-	</div>
+	</header>
 </template>
 
 ***********************************************************
@@ -64,8 +64,9 @@ export default
 // 	...
 ///////////////////////////////////////////////////////////
 
-.template
-{}
-
+header {
+	position: relative;
+	z-index: 101;
+}
 
 </style>
