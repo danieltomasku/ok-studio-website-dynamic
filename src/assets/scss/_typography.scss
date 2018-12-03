@@ -3,10 +3,36 @@
 //		Defines type throughout the site
 //  #######################################################
 
-// @font-face {
-//     font-family: FontName;
-//     src: url("../fonts/font.otf") format("opentype");
-// }
+@font-face {
+	font-family: GTWalsheim;
+	src: url(../fonts/GT-Walsheim-Pro-Thin.otf);
+	font-weight: 100;
+	font-style: normal;
+}
+@font-face {
+	font-family: GTWalsheim;
+	src: url(../fonts/GT-Walsheim-Pro-Light.otf);
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: GTWalsheim;
+	src: url(../fonts/GT-Walsheim-Pro-Regular.otf);
+	font-weight: 400, normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: GTWalsheim;
+	src: url(../fonts/GT-Walsheim-Pro-Medium.otf);
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: GTWalsheim;
+	src: url(../fonts/GT-Walsheim-Pro-Bold.otf);
+	font-weight: 900;
+	font-style: normal;
+}
 
 //  #######################################################
 //  #   Base
