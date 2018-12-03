@@ -1,6 +1,5 @@
 <template>
     <div :class="[ 'wrapper', 'pad-4', { 'hidden' : !isShown }]" :style="bgStyleObject" v-if="content">
-    	<div class="close" @click="onCloseClick($event)">Close</div>
     	<div class="container -center-v -fluid" style="height:100vh">
     		<!-- Main menu -->
     		<div class="col-12 h-text-right" v-if="!isIndexShown">
@@ -72,6 +71,22 @@ export default
 		// 	Methods
 		///////////////////////////////////////////////////////
 
+		toggleNav () {
+			var menuButton = document.getElementsByClassName('menu-button')[0];
+
+			if (this.isIndexShown) {
+				this.isIndexShown = false;
+			} else if (this.isShown) {
+				this.isShown = false;
+				menuButton.classList.remove('-active');
+			} else {
+				this.isShown = true;
+				menuButton.classList.add('-active')
+			}
+
+			document.body.classList.contains('lock-scroll') && !this.isShown ? document.body.classList.remove('lock-scroll') : document.body.classList.add('lock-scroll');
+		},
+
 		// Shows the memu
 		show ()
 		{
@@ -84,15 +99,15 @@ export default
 		{
 			this.isShown = false;
 			this.isIndexShown = false;
+			this.backgroundImage = null;
+			document.body.classList.remove('lock-scroll');
+			document.getElementsByClassName('menu-button')[0].classList.remove('-active');
 		},
 
 		// Shows the index menu
 		showIndex () { this.isIndexShown = true; },
 
-		// Shows the memu
-		hideIndex () { this.isIndexShown = false; },
-
-		//
+		// Shows index item background image on hover
 		onIndexMouseover (item)
 		{
 			this.backgroundImage = item.image;
@@ -107,14 +122,6 @@ export default
 		///////////////////////////////////////////////////////
 		// 	Events
 		///////////////////////////////////////////////////////
-
-		// on close button click
-		onCloseClick( event )
-		{
-			//
-			if( this.isIndexShown ) this.isIndexShown = false;
-			else this.isShown = false;
-		},
 
 		// on link button click
 		onLinkClick( item )
@@ -198,6 +205,7 @@ export default
 	background-color: white;
 	background-size: cover;
 	background-position: center;
+	z-index: 102;
 }
 
 .menu--link

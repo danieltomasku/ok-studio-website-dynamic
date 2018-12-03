@@ -11,7 +11,6 @@
                         v-for="item in content.carousel_items"
                         :key="item.uid"
                         :to=" '/project/' + item.home_carousel_item.uid "
-                        class="pad-1-top"
                     >
                         <li
                             class="landing-project"
