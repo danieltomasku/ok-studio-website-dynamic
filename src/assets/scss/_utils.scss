@@ -112,6 +112,15 @@ $pad-levels : 15;
 
 .hidden					{ display: none !important; }
 
+.-active {
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.lock-scroll {
+	overflow: hidden;
+}
+
 //  #######################################################
 //  #   Text
 //  #######################################################

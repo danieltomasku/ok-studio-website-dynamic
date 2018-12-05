@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper pad-4-v">
+    <footer class="wrapper pad-4-v">
     	<div class="container" v-if="content">
     		<div class="col-4">
     			&copy; {{ currentYear }} OK Studio
@@ -19,7 +19,7 @@
     			</div>
     		</div>
     	</div>
-	</div>
+	</footer>
 </template>
 
 ***********************************************************
@@ -71,6 +71,11 @@ export default
 ///////////////////////////////////////////////////////////
 // 	...
 ///////////////////////////////////////////////////////////
+
+footer {
+	position: relative;
+	z-index: 101;
+}
 
 .wrapper
 {

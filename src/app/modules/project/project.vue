@@ -2,7 +2,11 @@
     <div class="">
         <main-header></main-header>
 
-        <div class="pad-5-v" v-if="content">
+        <div
+            class="pad-5-v"
+            v-if="content"
+            :style="{ backgroundColor: content.project_color }"
+        >
 
 
             <div class="container">
