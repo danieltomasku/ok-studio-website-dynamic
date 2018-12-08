@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var express = require('express');
+var history = require('connect-history-api-fallback');
 var webpackConfig = require('./webpack.config.dev.js');
 
 var config = require( "./config.js" );
@@ -20,6 +21,9 @@ var app = express();
 
 // Init webpack
 var compiler = webpack( webpackConfig );
+
+// Enable Router History Mode Support
+app.use(history());
 
 // Enable dev middleware
 app.use(require("webpack-dev-middleware")(compiler,
