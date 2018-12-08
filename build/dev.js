@@ -22,6 +22,7 @@ var app = express();
 // Init webpack
 var compiler = webpack( webpackConfig );
 
+
 // Enable Router History Mode Support
 app.use(history());
 
