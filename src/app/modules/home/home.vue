@@ -1,7 +1,6 @@
 <template>
     <div class="">
-        <main-header></main-header>
-
+        
         <div>
             <!-- Landing Slider -->
 
@@ -43,8 +42,6 @@
             </section>
         </div>
 
-
-        <main-footer></main-footer>
     </div>
 </template>
 
@@ -54,11 +51,7 @@
 
 export default
 {
-    "components":
-    {
-        "main-header"   : require("@modules/shared/components/main-header.vue").default,
-        "main-footer"   : require("@modules/shared/components/main-footer.vue").default,
-    },
+    "components": {},
 
     ///////////////////////////////////////////////////////
     //  ...

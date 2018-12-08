@@ -1,6 +1,5 @@
 <template>
     <div class="">
-        <main-header></main-header>
 
         <div
             class="pad-5-v"
@@ -31,7 +30,6 @@
 
         </div>
 
-        <main-footer></main-footer>
     </div>
 </template>
 
@@ -43,9 +41,6 @@ export default
 {
     "components":
     {
-        "main-header"   : require("@modules/shared/components/main-header.vue").default,
-        "main-footer"   : require("@modules/shared/components/main-footer.vue").default,
-
         "column"        : require("@modules/shared/components/column.vue").default,
         "two-col-text"  : require("./components/two_col_text.vue").default,
         "two-col-two-row-text" : require("./components/two_col_two_row_text.vue").default,

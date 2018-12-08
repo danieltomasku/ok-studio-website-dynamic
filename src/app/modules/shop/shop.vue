@@ -1,6 +1,5 @@
 <template>
     <div class="">
-        <main-header></main-header>
 
         <div class="pad-5-v" v-if="content">
             <div class="container">
@@ -18,7 +17,6 @@
             </div>
         </div>
 
-        <main-footer></main-footer>
     </div>
 </template>
 
@@ -30,9 +28,6 @@ export default
 {
     "components":
     {
-        "main-header"   : require("@modules/shared/components/main-header.vue").default,
-        "main-footer"   : require("@modules/shared/components/main-footer.vue").default,
-
         "column"       : require("@modules/shared/components/column.vue").default,
         "pillar"       : require("@modules/shared/components/pillar.vue").default,
 

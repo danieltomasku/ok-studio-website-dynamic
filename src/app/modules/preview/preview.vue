@@ -1,6 +1,5 @@
 <template>
     <div class="">
-        <main-header></main-header>
 
         <div class="container pad-5-v">
             <div class="col">
@@ -8,8 +7,6 @@
             </div>
         </div>
 
-
-        <main-footer></main-footer>
     </div>
 </template>
 
@@ -22,11 +19,7 @@ export default {
     // See: https://prismic.io/docs/vuejs/beyond-the-api/in-website-preview
     name: 'Preview',
 
-    "components": 
-    {
-        "main-header"   : require("@modules/shared/components/main-header.vue").default,
-        "main-footer"   : require("@modules/shared/components/main-footer.vue").default,
-    },
+    "components": {},
 
     ///////////////////////////////////////////////////////
     //  ...

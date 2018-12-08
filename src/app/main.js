@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import router from "./router.js";
 import store from "./store.js";
+import Page from "./page.vue";
 
 import PrismicVue from 'prismic-vue';
 import linkResolver from '../prismic/link-resolver';
@@ -19,7 +20,8 @@ Vue.config.productionTip = false;
 let app = new Vue(
 {
 	router,
-	store
+	store,
+	render: (h) => h(Page),
 }
 ).$mount("#app");
 
