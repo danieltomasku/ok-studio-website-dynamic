@@ -1,5 +1,6 @@
 <template>
 	<div>
+
 		<!-- Menu Overlay -->
 		<section id="menu" :class="[{ '-active' : isShown }]" v-if="content">
 			<div class="menu-container">
@@ -9,16 +10,14 @@
 					</div>
 				</div>
 			</div>
+
 			<!-- Social Icons -->
 			<ul class="social-icons-wrapper">
 				<li
 					v-for="(item, index) in content.social_links"
 					:key="index"
 				>
-					<a
-						:href="item.link.url"
-						target="_blank"
-					>
+					<a :href="item.link.url" target="_blank">
 						<prismic-image :field="item.icon" class="social-icons-item" />
 					</a>
 				</li>
@@ -28,7 +27,7 @@
 		<!-- Index Overlay -->
 		<section id="index-overlay" :class="[{ '-active' : isIndexShown }]">
 			<div class="index-title-container">
-				<div v-for="item in indexLinks" :key="item.label">
+				<div class="index-title-wrapper" v-for="item in indexLinks" :key="item.label">
 					<h2
 						class="index-title goodwell"
 						@click="onLinkClick(item)"
@@ -115,14 +114,14 @@ export default
 			document.body.classList.contains('lock-scroll') && !this.isShown ? document.body.classList.remove('lock-scroll') : document.body.classList.add('lock-scroll');
 		},
 
-		// Shows the memu
+		// Shows the menu
 		show ()
 		{
 			this.isShown = true;
 			this.isIndexShown = false;
 		},
 
-		// Shows the memu
+		// Hides the menu
 		hide ()
 		{
 			this.isShown = false;
@@ -144,7 +143,7 @@ export default
 
 		onIndexMouseout (item)
 		{
-			this.backgroundImage = null;
+			this.hoverIndexTitle = false;
 		},
 
 
@@ -152,7 +151,7 @@ export default
 		// 	Events
 		///////////////////////////////////////////////////////
 
-		// on link button click
+		// Handle menu link click
 		onLinkClick( item )
 		{
 			// Handle index
@@ -222,66 +221,7 @@ export default
 // 	...
 ///////////////////////////////////////////////////////////
 
-.wrapper
-{
-	position: fixed;
-	left: 0;
-	top: 0;
-
-	width: 100vw;
-	height: 100vh;
-
-	background-color: white;
-	background-size: cover;
-	background-position: center;
-	z-index: 102;
-}
-
-.menu--link
-{
-	font-size: $font-size-large;
-
-	cursor: pointer;
-}
-
-.close
-{
-	position: fixed;
-	top: 20px;
-	right: 40px;
-
-	font-weight: normal;
-	font-size: $font-size-base;
-}
-
-.social
-{
-	position: fixed;
-	bottom: 0;
-	left: 0;
-}
-
-.social-link img
-{
-	width: 40px;
-
-	&:hover
-	{
-		filter: invert(100%);
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
+// Menu Styles
 #menu {
   width: 100vw;
   height: 100%;
@@ -335,6 +275,7 @@ export default
   -webkit-overflow-scrolling: touch;
 }
 
+// Social Icons Styles
 .social-icons-wrapper {
   width: auto;
   display: flex;
@@ -357,6 +298,8 @@ export default
   filter: invert(100%);
 }
 
+
+// Index Styles
 #index-overlay {
   width: 100vw;
   height: 100vh;
@@ -385,7 +328,7 @@ export default
   z-index: 105;
 }
 
-.index-title-container a {
+.index-title-wrapper {
   color: white;
   text-decoration: none;
   display: block;
@@ -455,29 +398,4 @@ export default
   background-size: cover;
   background-position: center center;
 }
-
-// .index-bg-image.goodwell {
-//   background-image: url('images/home-1.png');
-//   background-size: cover;
-//   background-position: center center;
-// }
-// .index-bg-image.west {
-//   background-image: url('images/home-2.png');
-//   background-size: cover;
-//   background-position: center center;
-// }
-// .index-bg-image.pretend {
-//   background-image: url('images/home-3.png');
-//   background-size: cover;
-//   background-position: center center;
-// }
-// .index-bg-image.docent {
-//   background-image: url('images/home-4.png');
-//   background-size: cover;
-//   background-position: center center;
-// }
-
-
-
-
 </style>

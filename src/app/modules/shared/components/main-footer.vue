@@ -1,5 +1,5 @@
 <template>
-    <footer class="wrapper pad-4-v">
+    <footer class="wrapper pad-8-v">
     	<div class="container -fluid" v-if="content">
     		<div class="col-6 col-mobile-12">
     			&copy; {{ currentYear }} OK Studio
@@ -7,14 +7,14 @@
     		<div class="col-3 col-mobile-12">
 				<span class="footer-column-label">Inquiries</span><br/>
     			<div class="">
-    				<a>{{ content.contact_email }}</a>
+    				<a class="footer-link-item">{{ content.contact_email }}</a>
     			</div>
-    			<div class="">T {{ content.contact_phone }}</div>
+    			<div class="footer-link-item">T {{ content.contact_phone }}</div>
     		</div>
     		<div class="col-3 col-mobile-12">
 				<span class="footer-column-label">Follow</span><br/>
     			<div class="" v-for="item in content.social_links" :key="item.label">
-    				<a target="_blank" :href="item.link.url">{{ item.label }}</a>
+    				<a class="footer-link-item" target="_blank" :href="item.link.url">{{ item.label }}</a>
     			</div>
     			<div class="pad-2-top">
     				<input :placeholder="content.subscribe_text" />
@@ -79,7 +79,6 @@ footer {
 	z-index: 101;;
 	font-weight: 600;
     font-size: 14px;
-    height: 330px;
     background-color: black;
 	color: white;
 	padding: 0 50px;
@@ -96,7 +95,7 @@ input {
     border: none;
     border-bottom: 1px solid white;
     padding: 7px 0;
-    width: 100%;
+    width: 60%;
     color: white;
 	font-size: 17px;
 }
@@ -115,6 +114,11 @@ input {
 	font-size: 22px;
 	position: relative;
 	display: block;
+}
+
+.footer-link-item {
+	display: block;
+	margin-bottom: 4px;
 }
 
 </style>
