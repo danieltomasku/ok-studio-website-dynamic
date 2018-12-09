@@ -223,179 +223,179 @@ export default
 
 // Menu Styles
 #menu {
-  width: 100vw;
-  height: 100%;
-  background-color: white;
-  color: black;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 102;
-  transition: transform 0.6s cubic-bezier(0.81, 0, 0.23, 0.99), opacity 1s;
-  overflow: auto;
-  transition: all .8s;
-  opacity: 0;
-  visibility: hidden;
+	width: 100vw;
+	height: 100%;
+	background-color: white;
+	color: black;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 102;
+	transition: transform 0.6s cubic-bezier(0.81, 0, 0.23, 0.99), opacity 1s;
+	overflow: auto;
+	transition: all .8s;
+	opacity: 0;
+	visibility: hidden;
 }
 
 .menu-item {
-  color: #dddfe2;
-  font-size: 70px;
-  margin: 3.3vh 0;
-  text-align: right;
-  line-height: 1;
-  font-weight: 300;
-  transition: color .6s;
+	color: #dddfe2;
+	font-size: 70px;
+	margin: 3.3vh 0;
+	text-align: right;
+	line-height: 1;
+	font-weight: 300;
+	transition: color .6s;
 }
 
 .menu-item:hover {
-  color: black;
-  font-weight: 300;
+	color: black;
+	font-weight: 300;
 }
 
 .menu-item-link {
-  color: #dddfe2;
-  text-decoration: none;
-  transition: color .6s;
+	color: #dddfe2;
+	text-decoration: none;
+	transition: color .6s;
 }
 
 .menu-item-link:hover {
-  color: black;
-  cursor: pointer;
+	color: black;
+	cursor: pointer;
 }
 
 .menu-container {
-  height: auto;
-  width: 100%;
-  overflow: auto;
-  padding: 50px;
-  transform: translateY(-50%);
-  top: 48%;
-  position: absolute;
-  -webkit-overflow-scrolling: touch;
+	height: auto;
+	width: 100%;
+	overflow: auto;
+	padding: 50px;
+	transform: translateY(-50%);
+	top: 48%;
+	position: absolute;
+	-webkit-overflow-scrolling: touch;
 }
 
 // Social Icons Styles
 .social-icons-wrapper {
-  width: auto;
-  display: flex;
-  justify-content: flex-end;
-  height: 40px;
-  align-items: center;
-  margin-top: 30px;
-  position: absolute;
-  bottom: 3%;
-  right: 50px;
+	width: auto;
+	display: flex;
+	justify-content: flex-end;
+	height: 40px;
+	align-items: center;
+	margin-top: 30px;
+	position: absolute;
+	bottom: 3%;
+	right: 50px;
 }
 
 .social-icons-item {
-  width: 40px;
-  margin: 0 0 0 24px;
-  transition: all .5s;
+	width: 40px;
+	margin: 0 0 0 24px;
+	transition: all .5s;
 }
 
 .social-icons-item:hover {
-  filter: invert(100%);
+	filter: invert(100%);
 }
 
 
 // Index Styles
 #index-overlay {
-  width: 100vw;
-  height: 100vh;
-  animation: colorBlend 20s infinite;
-  color: black;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 104;
-  transition: transform 0.6s cubic-bezier(0.81, 0, 0.23, 0.99), opacity 1s;
-  overflow: auto;
-  transition: all .8s;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+	width: 100vw;
+	height: 100vh;
+	animation: colorBlend 20s infinite;
+	color: black;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 104;
+	transition: transform 0.6s cubic-bezier(0.81, 0, 0.23, 0.99), opacity 1s;
+	overflow: auto;
+	transition: all .8s;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
 }
 
 .index-title-container {
-  display: inline-block;
-  position: relative;
-  width: auto;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  z-index: 105;
+	display: inline-block;
+	position: relative;
+	width: auto;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	text-align: center;
+	z-index: 105;
 }
 
 .index-title-wrapper {
-  color: white;
-  text-decoration: none;
-  display: block;
-  margin: 12px 0;
+	color: white;
+	text-decoration: none;
+	display: block;
+	margin: 12px 0;
 }
 
 .index-title {
-  color: white;
-  font-size: 70px;
-  font-weight: 300;
-  pointer-events: auto;
-  cursor: pointer;
-  position: relative;
+	color: white;
+	font-size: 70px;
+	font-weight: 300;
+	pointer-events: auto;
+	cursor: pointer;
+	position: relative;
 }
 
 .index-title:before, .index-title:after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 5px;
-  top: 50%;
-  margin-top: -0.5px;
-  background: #fff;
+	content: '';
+	position: absolute;
+	width: 0%;
+	height: 5px;
+	top: 50%;
+	margin-top: -0.5px;
+	background: #fff;
 }
 
 .index-title:before {
-  left: -2.5px;
+	left: -2.5px;
 }
 .index-title:after {
-  right: 2.5px;
-  background: #fff;
-  transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+	right: 2.5px;
+	background: #fff;
+	transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .index-title:hover:before {
-  background: #fff;
-  width: 100%;
-  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+	background: #fff;
+	width: 100%;
+	transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .index-title:hover:after {
-  background: transparent;
-  width: 100%;
-  transition: 0s;
+	background: transparent;
+	width: 100%;
+	transition: 0s;
 }
 
 
 .index-bg-wrapper {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .index-bg-image {
-  position: fixed;
-  display: block;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  visibility: hidden;
-  transition: all .7s;
-  background-size: cover;
-  background-position: center center;
+	position: fixed;
+	display: block;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	visibility: hidden;
+	transition: all .7s;
+	background-size: cover;
+	background-position: center center;
 }
 </style>

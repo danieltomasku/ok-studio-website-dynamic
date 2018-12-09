@@ -78,8 +78,8 @@ footer {
 	position: relative;
 	z-index: 101;;
 	font-weight: 600;
-    font-size: 14px;
-    background-color: black;
+	font-size: 14px;
+	background-color: black;
 	color: white;
 	padding: 0 50px;
 
@@ -91,12 +91,12 @@ footer {
 input {
 	font-family: $font-family-base;
 	background-color: transparent;
-    border-radius: unset;
-    border: none;
-    border-bottom: 1px solid white;
-    padding: 7px 0;
-    width: 60%;
-    color: white;
+	border-radius: unset;
+	border: none;
+	border-bottom: 1px solid white;
+	padding: 7px 0;
+	width: 60%;
+	color: white;
 	font-size: 17px;
 }
 

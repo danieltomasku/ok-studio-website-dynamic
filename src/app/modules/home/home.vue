@@ -22,12 +22,12 @@
 
                 <!-- Hover Area for Mouse Slider Navigation -->
                 <!-- <ul class="slides-control">
-                    <li class="slide-backward"></li>
-                    <li class="slide-forward"></li>
-                </ul>
+                                            <li class="slide-backward"></li>
+                                            <li class="slide-forward"></li>
+                                        </ul> -->
 
-                <ul class="slide-dots">
-                </ul> -->
+                <!-- Slide Dots -->
+                <!-- <ul class="slide-dots"></ul> -->
             </section>
 
             <!-- Home Intro -->
@@ -131,73 +131,72 @@ export default
         document.body.addEventListener('click', resetChars);
 
         allCharWrapper.forEach((item) => {
-        item.addEventListener('mouseenter', function (event) {
-            handleMouseEnter(event);
-        });
+            item.addEventListener('mouseenter', function (event) {
+                handleMouseEnter(event);
+            });
         });
 
         function handleMouseEnter(event) {
-        var rand = Math.floor(Math.random() * (event.target.children.length - 1)) + 1;
-        if (event.target.children[0].classList.contains('show')) {
-            event.target.children[0].classList.add('hide');
-            event.target.children[0].classList.remove('show');
-            event.target.children[rand].classList.add('show');
-            event.target.children[rand].classList.remove('hide');
-        } else {
-            event.target.children[0].classList.add('show');
-            event.target.children[0].classList.remove('hide');
-            var allChildren = Array.from(event.target.children);
-            var removeEmojiList = allChildren.slice(1);
+            var rand = Math.floor(Math.random() * (event.target.children.length - 1)) + 1;
+            if (event.target.children[0].classList.contains('show')) {
+                event.target.children[0].classList.add('hide');
+                event.target.children[0].classList.remove('show');
+                event.target.children[rand].classList.add('show');
+                event.target.children[rand].classList.remove('hide');
+            } else {
+                event.target.children[0].classList.add('show');
+                event.target.children[0].classList.remove('hide');
+                var allChildren = Array.from(event.target.children);
+                var removeEmojiList = allChildren.slice(1);
 
-            removeEmojiList.forEach(item => {
-            item.classList.add('hide');
-            item.classList.remove('show');
-            });
-        }
+                removeEmojiList.forEach(item => {
+                    item.classList.add('hide');
+                    item.classList.remove('show');
+                });
+            }
 
-        if (allCharEmoji.length === document.querySelectorAll('.char-emoji.show').length) {
-            allCharEmoji.forEach(item => {
-            item.style.animation = 'wave 2s infinite';
-            })
-        } else {
-            allCharEmoji.forEach(item => {
-            item.style.animation = '';
-            })
-        }
+            if (allCharEmoji.length === document.querySelectorAll('.char-emoji.show').length) {
+                allCharEmoji.forEach(item => {
+                    item.style.animation = 'wave 2s infinite';
+                });
+            } else {
+                allCharEmoji.forEach(item => {
+                    item.style.animation = '';
+                });
+            }
         };
 
         function autoPlayChars() {
-        var rand = Math.floor(Math.random() * allCharWrapper.length);
-        var randEmoji = Math.floor(Math.random() * (allCharWrapper[rand].children.length - 1)) + 1;
+            var rand = Math.floor(Math.random() * allCharWrapper.length);
+            var randEmoji = Math.floor(Math.random() * (allCharWrapper[rand].children.length - 1)) + 1;
 
-        if (allCharWrapper[rand].children[0].classList.contains('show')) {
-            allCharWrapper[rand].children[0].classList.add('hide');
-            allCharWrapper[rand].children[0].classList.remove('show');
-            allCharWrapper[rand].children[randEmoji].classList.add('show');
-            allCharWrapper[rand].children[randEmoji].classList.remove('hide');
-        } else {
-            allCharWrapper[rand].children[0].classList.add('show');
-            allCharWrapper[rand].children[0].classList.remove('hide');
-            var allChildren = Array.from(allCharWrapper[rand].children);
-            var removeEmojiList = allChildren.slice(1);
+            if (allCharWrapper[rand].children[0].classList.contains('show')) {
+                allCharWrapper[rand].children[0].classList.add('hide');
+                allCharWrapper[rand].children[0].classList.remove('show');
+                allCharWrapper[rand].children[randEmoji].classList.add('show');
+                allCharWrapper[rand].children[randEmoji].classList.remove('hide');
+            } else {
+                allCharWrapper[rand].children[0].classList.add('show');
+                allCharWrapper[rand].children[0].classList.remove('hide');
+                var allChildren = Array.from(allCharWrapper[rand].children);
+                var removeEmojiList = allChildren.slice(1);
 
-            removeEmojiList.forEach(item => {
-            item.classList.add('hide');
-            item.classList.remove('show');
-            });
-        }
-
+                removeEmojiList.forEach(item => {
+                    item.classList.add('hide');
+                    item.classList.remove('show');
+                });
+            }
         }
 
         function resetChars() {
-        allCharOriginal.forEach(item => {
-            item.classList.add('show');
-            item.classList.remove('hide');
-        });
-        allCharEmoji.forEach(item => {
-            item.classList.add('hide');
-            item.classList.remove('show');
-        })
+            allCharOriginal.forEach(item => {
+                item.classList.add('show');
+                item.classList.remove('hide');
+            });
+            allCharEmoji.forEach(item => {
+                item.classList.add('hide');
+                item.classList.remove('show');
+            });
         }
     },
 
