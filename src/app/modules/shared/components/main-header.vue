@@ -88,7 +88,7 @@ header {
 	padding: 0 50px;
 	mix-blend-mode: difference;
 
-	@media (max-width: $bp-size-sm) {
+	@media (max-width: $bp-size-md) {
 		padding: 0 25px;
 	}
 }
@@ -177,6 +177,10 @@ header {
 	background-color: transparent;
 	border: none;
 	mix-blend-mode: difference;
+
+	@media (max-width: $bp-size-md) {
+		right: 25px;
+	}
 }
 
 </style>

@@ -196,7 +196,7 @@ export default
 			{
 				return { "label" : item.project.data.project_title[0].text,
 						"link" : `/project/${item.project.uid}`,
-						"image" : item.project.data.hero_image.url
+						"image" : item.project.data.carousel_image.url
 					};
 			});
 		},
