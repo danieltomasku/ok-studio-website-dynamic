@@ -87,6 +87,10 @@ header {
 	z-index: 101;
 	padding: 0 50px;
 	mix-blend-mode: difference;
+
+	@media (max-width: $bp-size-sm) {
+		padding: 0 25px;
+	}
 }
 
 .logo {

@@ -1,16 +1,18 @@
 <template>
     <footer class="wrapper pad-4-v">
-    	<div class="container" v-if="content">
-    		<div class="col-4">
+    	<div class="container -fluid" v-if="content">
+    		<div class="col-6 col-mobile-12">
     			&copy; {{ currentYear }} OK Studio
     		</div>
-    		<div class="col-4">
+    		<div class="col-3 col-mobile-12">
+				<span class="footer-column-label">Inquiries</span><br/>
     			<div class="">
-    				<a :href=" 'mailto:' + content.contact_email ">{{ content.contact_email }}</a>
+    				<a>{{ content.contact_email }}</a>
     			</div>
     			<div class="">T {{ content.contact_phone }}</div>
     		</div>
-    		<div class="col-4">
+    		<div class="col-3 col-mobile-12">
+				<span class="footer-column-label">Follow</span><br/>
     			<div class="" v-for="item in content.social_links" :key="item.label">
     				<a target="_blank" :href="item.link.url">{{ item.label }}</a>
     			</div>
@@ -74,20 +76,45 @@ export default
 
 footer {
 	position: relative;
-	z-index: 101;
+	z-index: 101;;
+	font-weight: 600;
+    font-size: 14px;
+    height: 330px;
+    background-color: black;
+	color: white;
+	padding: 0 50px;
+
+	@media (max-width: $bp-size-sm) {
+		padding: 0 25px;
+	}
+}
+
+input {
+	font-family: $font-family-base;
+	background-color: transparent;
+    border-radius: unset;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 7px 0;
+    width: 100%;
+    color: white;
+	font-size: 17px;
 }
 
 .wrapper
 {
-	background: black;
-	color: white; 
-
 	a 
 	{ 
 		color: white; 
-		text-decoration: underline;
+		text-decoration: none;
 	}
 }
 
+.footer-column-label {
+	font-weight: 300;
+	font-size: 22px;
+	position: relative;
+	display: block;
+}
 
 </style>
