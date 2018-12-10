@@ -1,18 +1,20 @@
 <template>
-    <footer class="wrapper pad-4-v">
-    	<div class="container" v-if="content">
-    		<div class="col-4">
+    <footer class="wrapper pad-8-v">
+    	<div class="container -fluid" v-if="content">
+    		<div class="col-6 col-tablet-12">
     			&copy; {{ currentYear }} OK Studio
     		</div>
-    		<div class="col-4">
+    		<div class="col-3 col-tablet-12">
+				<span class="footer-column-label">Inquiries</span><br/>
     			<div class="">
-    				<a :href=" 'mailto:' + content.contact_email ">{{ content.contact_email }}</a>
+    				<a class="footer-link-item">{{ content.contact_email }}</a>
     			</div>
-    			<div class="">T {{ content.contact_phone }}</div>
+    			<a class="footer-link-item" :href="'tel:' + content.contact_phone">T {{ content.contact_phone }}</a>
     		</div>
-    		<div class="col-4">
+    		<div class="col-3 col-tablet-12">
+				<span class="footer-column-label">Follow</span><br/>
     			<div class="" v-for="item in content.social_links" :key="item.label">
-    				<a target="_blank" :href="item.link.url">{{ item.label }}</a>
+    				<a class="footer-link-item" target="_blank" :href="item.link.url">{{ item.label }}</a>
     			</div>
     			<div class="pad-2-top">
     				<input :placeholder="content.subscribe_text" />
@@ -74,20 +76,54 @@ export default
 
 footer {
 	position: relative;
-	z-index: 101;
+	z-index: 101;;
+	font-weight: 600;
+	font-size: 14px;
+	background-color: black;
+	color: white;
+	padding: 0 50px;
+
+	@media (max-width: $bp-size-md) {
+		padding: 0 25px;
+	}
+}
+
+input {
+	font-family: $font-family-base;
+	background-color: transparent;
+	border-radius: unset;
+	border: none;
+	border-bottom: 1px solid white;
+	padding: 7px 0;
+	width: 60%;
+	color: white;
+	font-size: 17px;
 }
 
 .wrapper
 {
-	background: black;
-	color: white; 
-
 	a 
 	{ 
 		color: white; 
-		text-decoration: underline;
+		text-decoration: none;
 	}
 }
 
+a[href^="tel"] {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+.footer-column-label {
+	font-weight: 300;
+	font-size: 22px;
+	position: relative;
+	display: block;
+}
+
+.footer-link-item {
+	display: block;
+	margin-bottom: 4px;
+}
 
 </style>

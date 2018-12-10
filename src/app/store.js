@@ -36,7 +36,7 @@ module.exports = new Vuex.Store
 			getSitewideData ( state, prismic ) 
 			{
 				// Get menu and footer from prismic API
-	            prismic.client.getSingle('menu', { 'fetchLinks': ['project.project_title', 'project.hero_image'] } )
+	            prismic.client.getSingle('menu', { 'fetchLinks': ['project.project_title', 'project.carousel_image', 'project.hero_image'] } )
 	            .then( (response, error) => 
 	            {
 	                // Print if error

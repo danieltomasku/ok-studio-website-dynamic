@@ -146,9 +146,9 @@ $bp-xl 								: (min-width: $bp-size-xl);
 // Computed for mobile devices
 $bp-mobile							: (max-width: $bp-size-sm - 1px);
 // Computed for tablet devices
-$bp-tablet							: (min-width: $bp-size-sm) and (max-width: $bp-size-lg - 1px);
+$bp-tablet							: (min-width: $bp-size-sm) and (max-width: $bp-size-md - 1px);
 // Computed for dekstop
-$bp-desktop							: (min-width: $bp-size-lg);
+$bp-desktop							: (min-width: $bp-size-md);
 
 // A map of the classes (for use in iteration)
 $bp-classes : ( "mobile" : $bp-mobile, "tablet" : $bp-tablet, "desktop" : $bp-desktop );

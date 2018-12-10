@@ -22,23 +22,61 @@
 
                 <!-- Hover Area for Mouse Slider Navigation -->
                 <!-- <ul class="slides-control">
-                    <li class="slide-backward"></li>
-                    <li class="slide-forward"></li>
-                </ul>
+                                            <li class="slide-backward"></li>
+                                            <li class="slide-forward"></li>
+                                        </ul> -->
 
-                <ul class="slide-dots">
-                </ul> -->
+                <!-- Slide Dots -->
+                <!-- <ul class="slide-dots"></ul> -->
             </section>
 
             <!-- Home Intro -->
             <section class="page-content">
                 <div class="page-intro">
                     <h1 class="col-12 h-text-center">
-                        OK Studio is a no bullshit, independent creative practice based in Portland, Oregon.
+                         <p>
+                            <span class="char-wrapper">
+                                <span class="char-original show">OK</span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-OK.svg"/></span>
+                            </span>
+                            <span>Studio is a</span>
+                            <span class="char-wrapper">
+                                <span class="char-original show">no</span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-No1.svg"/></span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-No2.svg"/></span>
+                            </span>
+                            <span class="char-wrapper">
+                                <span class="char-original show">bullshit,</span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-Bullshit3.svg"/></span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-Bullshit1.svg"/></span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-Bullshit2.svg"/></span>
+                            </span>
+                            <span>independent</span>
+                            <span class="char-wrapper">
+                                <span class="char-original show">creative</span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-Creative1.svg"/></span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-Creative2.svg"/></span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-Creative3.svg"/></span>
+                            </span>
+                            <span class="char-wrapper">
+                                <span class="char-original show">practice</span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-Practice.svg"/></span>
+                            </span>
+                            <span>based in</span>
+                            <span class="char-wrapper">
+                                <span class="char-original show">Portland,</span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-Portland1.svg"/></span>
+                                <span class="char-emoji hide"><img src="images/ok-emoji-Portland2.svg"/></span>
+                            </span>
+                            <span>Oregon.</span>
+                        </p>
                     </h1>
-                    <div class="col-12 h-text-center pad-2-top" v-if="content">
-                        <a :href=" 'mailto:' + content.contact_email ">{{ content.contact_text }}</a>
+
+                    <!-- E-mail Link -->
+                    <div class="say-hello" onclick="toggleForm(this)" v-if="content">
+                        {{ content.contact_text }} <span class="say-hello-arrow">→</span>
                     </div>
+
                 </div>
             </section>
         </div>
@@ -84,7 +122,83 @@ export default
     },
 
     "mounted": function()
-    {},
+    {
+        // EMOJI WORD REPLACEMENT
+        const allCharWrapper = Array.from(document.querySelectorAll('.char-wrapper'));
+        const allCharOriginal = Array.from(document.querySelectorAll('.char-original'));
+        const allCharEmoji = Array.from(document.querySelectorAll('.char-emoji'));
+
+        document.body.addEventListener('click', resetChars);
+
+        allCharWrapper.forEach((item) => {
+            item.addEventListener('mouseenter', function (event) {
+                handleMouseEnter(event);
+            });
+        });
+
+        function handleMouseEnter(event) {
+            var rand = Math.floor(Math.random() * (event.target.children.length - 1)) + 1;
+            if (event.target.children[0].classList.contains('show')) {
+                event.target.children[0].classList.add('hide');
+                event.target.children[0].classList.remove('show');
+                event.target.children[rand].classList.add('show');
+                event.target.children[rand].classList.remove('hide');
+            } else {
+                event.target.children[0].classList.add('show');
+                event.target.children[0].classList.remove('hide');
+                var allChildren = Array.from(event.target.children);
+                var removeEmojiList = allChildren.slice(1);
+
+                removeEmojiList.forEach(item => {
+                    item.classList.add('hide');
+                    item.classList.remove('show');
+                });
+            }
+
+            if (allCharEmoji.length === document.querySelectorAll('.char-emoji.show').length) {
+                allCharEmoji.forEach(item => {
+                    item.style.animation = 'wave 2s infinite';
+                });
+            } else {
+                allCharEmoji.forEach(item => {
+                    item.style.animation = '';
+                });
+            }
+        };
+
+        function autoPlayChars() {
+            var rand = Math.floor(Math.random() * allCharWrapper.length);
+            var randEmoji = Math.floor(Math.random() * (allCharWrapper[rand].children.length - 1)) + 1;
+
+            if (allCharWrapper[rand].children[0].classList.contains('show')) {
+                allCharWrapper[rand].children[0].classList.add('hide');
+                allCharWrapper[rand].children[0].classList.remove('show');
+                allCharWrapper[rand].children[randEmoji].classList.add('show');
+                allCharWrapper[rand].children[randEmoji].classList.remove('hide');
+            } else {
+                allCharWrapper[rand].children[0].classList.add('show');
+                allCharWrapper[rand].children[0].classList.remove('hide');
+                var allChildren = Array.from(allCharWrapper[rand].children);
+                var removeEmojiList = allChildren.slice(1);
+
+                removeEmojiList.forEach(item => {
+                    item.classList.add('hide');
+                    item.classList.remove('show');
+                });
+            }
+        }
+
+        function resetChars() {
+            allCharOriginal.forEach(item => {
+                item.classList.add('show');
+                item.classList.remove('hide');
+            });
+            allCharEmoji.forEach(item => {
+                item.classList.add('hide');
+                item.classList.remove('show');
+            });
+        }
+    },
 
     "destroyed": function(){},
 
@@ -133,7 +247,7 @@ export default
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: -1;
 }
 
 .landing-project {
@@ -170,6 +284,113 @@ export default
         font-size: 4.6vw;
         line-height: 1.4;
     }
+}
+
+
+
+/* Emoji Word Replacement */
+
+.char-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.char-original {
+  position: relative;
+  visibility: visible;
+  opacity: 1;
+  transition: all .6s;
+}
+
+.char-emoji {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  transition: all .6s;
+}
+
+.char-emoji img {
+  width: 6vw;
+  max-width: none;
+}
+
+.char-wrapper:nth-child(1) .char-emoji {
+  animation-delay: .1s !important;
+}
+.char-wrapper:nth-child(2) .char-emoji {
+  animation-delay: .2s !important;
+}
+.char-wrapper:nth-child(3) .char-emoji {
+  animation-delay: .3s !important;
+}
+.char-wrapper:nth-child(4) .char-emoji {
+  animation-delay: .4s !important;
+}
+.char-wrapper:nth-child(5) .char-emoji {
+  animation-delay: .5s !important;
+}
+.char-wrapper:nth-child(5) .char-emoji {
+  animation-delay: .6s !important;
+}
+.char-wrapper:nth-child(5) .char-emoji {
+  animation-delay: .7s !important;
+}
+.char-wrapper:nth-child(5) .char-emoji {
+  animation-delay: .8s !important;
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show {
+  display: inline-block;
+}
+
+.char-emoji.show {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+
+@keyframes wave {
+  0% {
+    transform: translate(-50%, 0px);
+  }
+  50% {
+    transform: translate(-50%, -40px)
+  }
+  100% {
+    transform: translate(-50%, 0px);
+  }
+}
+
+/*End Emoji Word Replacement*/
+
+.say-hello {
+  font-family: GTWalsheim, sans-serif;
+  font-size: 18px;
+  margin: 64px 0;
+  text-align: center;
+}
+
+.say-hello-arrow {
+  display: inline-block;
+  transition: transform .2s ease-in-out;
+  padding-left: 4px;
+}
+
+.say-hello:hover {
+  cursor: pointer;
+}
+
+.say-hello:hover .say-hello-arrow {
+  transform: translateX(4px);
 }
 
 </style>
