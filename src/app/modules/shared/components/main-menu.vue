@@ -4,7 +4,12 @@
 		<!-- Menu Overlay -->
 		<section id="menu" :class="[{ '-active' : isShown }]" v-if="content">
 			<div class="menu-container">
-				<div class="menu-item" v-for="item in links" :key="item.label">
+				<div
+					class="menu-item"
+					v-for="item in links"
+					:key="item.label"
+					:style="[isIndexShown && {'pointer-events': 'none'}]"
+				>
 					<div class="menu-item-link" href="/" @click="onLinkClick(item)">
 						{{ item.label }}
 					</div>
