@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import router from "./router.js";
 import store from "./store.js";
+import Meta from 'vue-meta'
 import Page from "./page.vue";
 
 import PrismicVue from 'prismic-vue';
 import linkResolver from '../prismic/link-resolver';
 import htmlSerializer from '../prismic/html-serializer'
+
+Vue.use(Meta);
  
 // Init Prismic
 Vue.use( PrismicVue, {

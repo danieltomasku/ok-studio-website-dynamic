@@ -102,6 +102,8 @@ export default
                 if( error ) console.error(  error );
                 // Assign articles
                 this.content = response.data;
+                // Update page title
+                this.$store.commit("updatePageTitle", response.data.project_title[0].text);
             });
         },
 

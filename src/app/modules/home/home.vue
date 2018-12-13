@@ -76,8 +76,7 @@ export default
         this.getContent();
     },
 
-    "mounted": function()
-    {},
+    "mounted": function() {},
 
     "destroyed": function(){},
 

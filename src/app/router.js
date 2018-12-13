@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import store from "./store.js";
 import VueRouter from 'vue-router';
 
 ///////////////////////////////////////////////////////////
@@ -25,9 +26,12 @@ let router = new VueRouter( { "routes" : routes } );
 
 router.beforeEach((to, from, next) =>
 {
+	// Reset page title
+	store.commit("updatePageTitle", null);
 	// Scroll to the top when new page is loaded
 	// Add delay to allow for DOM to be rewritten before scrolling top
-	window.setTimeout( ()=> { window.scrollTo(0, 0); next(); }, 10 );
+	window.setTimeout( ()=> { window.scrollTo(0, 0); }, 10 );
+	next();
 });
 
 ///////////////////////////////////////////////////////////

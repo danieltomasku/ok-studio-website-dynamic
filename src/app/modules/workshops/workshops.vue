@@ -52,7 +52,11 @@ export default
         this.getContent();
     },
 
-    "mounted": function(){},
+    "mounted": function()
+    {
+        // Update page title
+        this.$store.commit("updatePageTitle", "Workshops");
+    },
 
     "destroyed": function(){},
 
