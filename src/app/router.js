@@ -17,7 +17,7 @@ routes = routes.concat( require("@modules/workshops/routes.js") );
 routes = routes.concat( require("@modules/shop/routes.js") );
 
 // Create router instance
-let router = new VueRouter( { "routes" : routes } );
+let router = new VueRouter( { mode: 'history', "routes" : routes } );
 
 ///////////////////////////////////////////////////////////
 //  ...

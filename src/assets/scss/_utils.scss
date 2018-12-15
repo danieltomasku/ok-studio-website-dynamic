@@ -3,11 +3,38 @@
 //		Single purpose utitlity classes
 //  #######################################################
 
-$pad-levels : 15;
+//  #######################################################
+//  #   Animation
+//  #######################################################
+
+@keyframes colorBlend {
+	0% {
+		background-color: #143e3b;
+	}
+	14% {
+		background-color: #d6a49a;
+	}
+	28% {
+		background-color: #dddfe2;
+	}
+	42% {
+		background-color: #282626;
+	}
+	57% {
+		background-color: #fbaf23;
+	}
+	71% {
+		background-color: #bd401b;
+	}
+	100% {
+		background-color: #143e3b;
+	}
+}
 
 //  #######################################################
 //  #   Padding
 //  #######################################################
+$pad-levels : 15;
 
 @for $i from 0 through $pad-levels 
 {
