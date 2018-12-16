@@ -3,6 +3,7 @@
 
         <div
             v-if="content"
+            :class="[content.theme_type === 'Dark' ? 'dark-theme' : 'light-theme' ]"
             :style="{ backgroundColor: content.project_color }"
         >
 
@@ -18,10 +19,10 @@
                 :key="index">
             </component>
 
-            <div class="container">
+            <div class="section-wrapper container">
                 <div class="col-12 h-text-right">
-                    <h6>Next Project</h6>
-                    <router-link :to=" '/project/' + content.next_project.uid ">{{ content.next_project.data.project_title[0].text }}</router-link>
+                    <h6 class="next-project-eyebrow">Next Project</h6>
+                    <router-link :to=" '/project/' + content.next_project.uid " class="next-project-title">{{ content.next_project.data.project_title[0].text }}</router-link>
                 </div>
             </div>
 
@@ -134,6 +135,23 @@ export default
     object-fit: cover;
     height: 100vh;
     width: 100%;
+}
+
+.dark-theme {
+    color: white;
+    overflow: auto;
+}
+
+.next-project-eyebrow {
+    display: block;
+    font-size: 20px;
+}
+
+.next-project-title {
+    font-size: 70px;
+    margin: 4px 0 0;
+    font-weight: 400;
+    color: white;
 }
 
 
