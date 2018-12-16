@@ -207,7 +207,7 @@ export default
 				visibility $time;
 
 	cursor: none;
-	font-family: GTWalsheim-Light, sans-serif;
+	font-weight: 300;
 
 	&.-shown
 	{
