@@ -3,24 +3,21 @@
         <main-header></main-header>
 
         <div
-            class="pad-5-v"
             v-if="content"
             :style="{ backgroundColor: content.project_color }"
         >
 
-
             <div class="container">
-                <div class="col-12">
-                    <prismic-image :field="content.hero_image" class="" />
-                </div>
+                <prismic-image :field="content.hero_image" class="project-hero" />
             </div>
 
-            <component  class="margin-4-v"
-                        v-for="(item, index) in content.body"
-                        :is="componentTypeForContent( item )"
-                        :content="item"
-                        :key="index">
-                        </component>
+            <component
+                v-for="(item, index) in content.body"
+                :is="componentTypeForContent( item )"
+                :content="item"
+                :theme="content.theme_type"
+                :key="index">
+            </component>
 
             <div class="container">
                 <div class="col-12 h-text-right">
@@ -135,6 +132,13 @@ export default
 ///////////////////////////////////////////////////////////
 //  ...
 ///////////////////////////////////////////////////////////
+
+.project-hero {
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+}
+
 
 
 </style>

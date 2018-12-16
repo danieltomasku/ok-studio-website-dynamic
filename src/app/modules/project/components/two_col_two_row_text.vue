@@ -1,6 +1,6 @@
 <template>
-    <div class="">
-    	<div class="container pad-4-v">
+    <div class="section-wrapper">
+    	<div class="container">
 	    	<div class="container -nowrap">
 	    		<div class="col-6">
 		    		<div class="">

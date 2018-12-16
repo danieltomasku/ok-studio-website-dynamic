@@ -1,6 +1,8 @@
 <template>
-    <div class="">
-    	<div class="container pad-4-v">
+    <div
+        :class="[theme === 'Dark' ? 'dark-theme' : 'light-theme', 'section-wrapper']"
+    >
+    	<div class="container">
     		<div class="col-12" v-if="content.primary.eyebrow">
     			<h3>{{ content.primary.eyebrow }}</h3>
 	    	</div>
@@ -32,7 +34,7 @@ export default
 	{
 		return {}
 	},
-	"props" : ["content"],
+	"props" : ["content", "theme"],
 	"watch" : {},
 
 	///////////////////////////////////////////////////////
@@ -64,8 +66,9 @@ export default
 // 	...
 ///////////////////////////////////////////////////////////
 
-.template
-{}
+.dark-theme {
+    color: white;
+}
 
 
 </style>

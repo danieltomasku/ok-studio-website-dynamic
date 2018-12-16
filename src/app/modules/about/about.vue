@@ -22,11 +22,11 @@
         </div>
 
         <div class="pad-5-v" v-if="content">
-            <component  class="margin-4-v"
-                        v-for="(item, index) in content.body"
-                        :is="componentTypeForContent( item )"
-                        :content="item"
-                        :key="index">
+            <component
+                v-for="(item, index) in content.body"
+                :is="componentTypeForContent( item )"
+                :content="item"
+                :key="index">
             </component>
         </div>
 

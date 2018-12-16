@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
-    max-width: $grid-container-width;
+    // max-width: $grid-container-width;
     width: 100%;
     margin: 0 auto;
 
@@ -26,6 +26,18 @@
     &.-fluid { max-width: 100vw; }
 
     &.-nowrap       { flex-wrap: nowrap; }
+}
+
+.section-wrapper {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0 100px;
+    margin: 120px 0;
+
+    @media (max-width: $bp-size-md) {
+		padding: 0 25px;
+    }
 }
 
 ///////////////////////////////////////////////////////////

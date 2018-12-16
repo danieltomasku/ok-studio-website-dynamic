@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="section-wrapper">
     	<div class="container pad-4-v">
 	    	<div class="container -nowrap">
 	    		<div class="col-12">
