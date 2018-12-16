@@ -170,13 +170,14 @@ header {
 
 .role-title {
     font-family: $font-family-base;
-    margin-bottom: 12px;
     font-size: 18px;
-    font-weight: normal;
+    font-weight: 800;
+    margin-bottom: 12px;
 }
 
 .role-item {
     font-family: $font-family-base;
+    font-weight: 300;
     margin-bottom: 1px;
     line-height: 1.7;
     letter-spacing: .5px;
