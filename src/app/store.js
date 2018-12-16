@@ -17,6 +17,7 @@ module.exports = new Vuex.Store
 			return {
 				"menu" : null,
 				"footer" : null,
+				"pageTitle" : null,
 			}
 		},
 		"getters" : 
@@ -53,7 +54,12 @@ module.exports = new Vuex.Store
 	                state.footer = response.data;
 	            })
 	            ;
-			}
+			},
+
+			updatePageTitle ( state, title ) 
+			{
+				state.pageTitle = title;
+			},
 		},
 
 		"actions" : 
@@ -62,6 +68,11 @@ module.exports = new Vuex.Store
 			loadSitewideData ( context, prismic ) 
 			{
 				context.commit( "getSitewideData", prismic );
+			},
+
+			updatePageTitle ( context, title )
+			{
+				context.commit( "setPageTitle", title );
 			}
 		},
 	}

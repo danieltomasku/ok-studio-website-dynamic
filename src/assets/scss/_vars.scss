@@ -144,7 +144,7 @@ $bp-lg 								: (min-width: $bp-size-lg) and (max-width: $bp-size-xl - 1px);
 $bp-xl 								: (min-width: $bp-size-xl);
 
 // Computed for mobile devices
-$bp-mobile							: (max-width: $bp-size-sm - 1px);
+$bp-mobile							: (max-width: $bp-size-md - 1px);
 // Computed for tablet devices
 $bp-tablet							: (min-width: $bp-size-sm) and (max-width: $bp-size-md - 1px);
 // Computed for dekstop
