@@ -1,6 +1,5 @@
 <template>
     <div class="">
-        <main-header></main-header>
 
         <div
             v-if="content"
@@ -28,7 +27,6 @@
 
         </div>
 
-        <main-footer></main-footer>
     </div>
 </template>
 
@@ -40,9 +38,6 @@ export default
 {
     "components":
     {
-        "main-header"   : require("@modules/shared/components/main-header.vue").default,
-        "main-footer"   : require("@modules/shared/components/main-footer.vue").default,
-
         "column"        : require("@modules/shared/components/column.vue").default,
         "two-col-text"  : require("./components/two_col_text.vue").default,
         "two-col-two-row-text" : require("./components/two_col_two_row_text.vue").default,
@@ -104,6 +99,8 @@ export default
                 if( error ) console.error(  error );
                 // Assign articles
                 this.content = response.data;
+                // Update page title
+                this.$store.commit("updatePageTitle", response.data.project_title[0].text);
             });
         },
 

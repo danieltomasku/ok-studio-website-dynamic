@@ -1,7 +1,5 @@
 <template>
     <div v-if="content" :style="{background: `linear-gradient( to bottom, ${content.bg_gradient_start}, ${content.bg_gradient_finish})`}">
-        <main-header></main-header>
-
         <div class="about-hero">
             <div class="hero-title">
                 {{ content.hero_text[0].text }}
@@ -30,7 +28,6 @@
             </component>
         </div>
 
-        <main-footer></main-footer>
     </div>
 </template>
 
@@ -42,9 +39,6 @@ export default
 {
     "components":
     {
-        "main-header"   : require("@modules/shared/components/main-header.vue").default,
-        "main-footer"   : require("@modules/shared/components/main-footer.vue").default,
-
         "column"       : require("@modules/shared/components/column.vue").default,
         "pillar"       : require("@modules/shared/components/pillar.vue").default,
 
@@ -71,7 +65,11 @@ export default
         this.getContent();
     },
 
-    "mounted": function(){},
+    "mounted": function()
+    {
+        // Update page title
+        this.$store.commit("updatePageTitle", "About");
+    },
 
     "destroyed": function(){},
 
