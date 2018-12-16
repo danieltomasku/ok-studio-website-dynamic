@@ -7,17 +7,15 @@
                 {{ content.hero_text[0].text }}
             </div>
             <div class="about-contact roles">
-                <div
-                    class="role"
-                    v-for="(item, index) in content.contact_info"
-                    :key="index + '-contact'"
-                >
-                    <div class="role-title" v-if="item.type == 'heading2'">
-                        {{ item.text }}
-                    </div>
-                    <div class="role-item" v-if="item.type == 'paragraph'">
-                        {{ item.text }}
-                    </div>
+                <div class="role">
+                    <template v-for="(item, index) in content.contact_info">
+                        <div class="role-title" v-if="item.type == 'heading2'" :key="index">
+                            {{ item.text }}
+                        </div>
+                        <div class="role-item" v-if="item.type == 'paragraph'" :key="index">
+                            {{ item.text }}
+                        </div>
+                    </template>
                 </div>
             </div>
             <!-- <img class="about-shape" src="images/about-shape.png"/> -->
@@ -146,5 +144,44 @@ header {
     position: relative;
     padding: 0 17% 55px 0;
 }
+
+.about-contact {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 18px;
+    padding: 0;
+    font-family: $font-family-base;
+    color: white;
+}
+
+.roles {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 18px;
+    padding-top: 12px;
+}
+
+.role {
+    font-size: 18px;
+    width: 20%;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.role-title {
+    font-family: $font-family-base;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.role-item {
+    font-family: $font-family-base;
+    margin-bottom: 1px;
+    line-height: 1.7;
+    letter-spacing: .5px;
+}
+
+
 
 </style>
