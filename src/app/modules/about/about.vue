@@ -1,5 +1,5 @@
 <template>
-    <div v-if="content" :style="{background: `linear-gradient( to bottom, ${content.bg_gradient_start}, ${content.bg_gradient_finish})`}">
+    <div class="dark-theme" v-if="content" :style="{background: `linear-gradient( to bottom, ${content.bg_gradient_start}, ${content.bg_gradient_finish})`}">
         <div class="about-hero">
             <div class="hero-title">
                 {{ content.hero_text[0].text }}
@@ -169,16 +169,16 @@ header {
 .role-title {
     font-family: $font-family-base;
     font-size: 18px;
-    font-weight: 800;
+    font-weight: 600;
     margin-bottom: 12px;
 }
 
 .role-item {
     font-family: $font-family-base;
-    font-weight: 300;
-    margin-bottom: 1px;
+    font-weight: 100;
     line-height: 1.7;
     letter-spacing: .5px;
+    margin-bottom: 1px;
 }
 
 

@@ -1,22 +1,30 @@
 <template>
-    <div class="">
-    	<div class="container -fluid pad-4-v pillar-wrapper -new-line-heading">
+    <div class="section-wrapper">
+    	<div class="container -fluid pillar-wrapper -new-line-heading">
     		<div
-                :class="[content.primary.full_width === 'Full Width' ? 'col-12' : 'col-4']"
+                :class="[content.primary.full_width === 'Full Width' ? 'col-12 pad-8-bottom' : 'col-4']"
                 v-if="content.primary.section_title[0]"
             >
     			<h3>{{ content.primary.section_title[0].text }}</h3>
 	    	</div>
 	    	<div :class="[content.primary.full_width === 'Full Width' ? 'col-12' : 'col-8', 'container']">
-                <div class ="col-12" v-if="content.primary.rich_text[0]">
+                <div class ="col-12 pad-8-bottom" v-if="content.primary.rich_text[0]">
                     <p>{{ content.primary.rich_text[0].text }}</p>
                 </div>
 	    		<div
-                    :class="[content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3' : content.items.length === 3 ? 'col-4' : 'col-6']"
+                    :class="[content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3 four-up' : content.items.length === 3 ? 'col-4' : 'col-6 two-up']"
                     v-for="(item, index) in content.items"
                     :key="index"
                 >
-	    			<prismic-rich-text :field="item.column_body" />
+                    <template v-for="(richtext, index) in item.column_body">
+                        <img v-if="richtext.type === 'image'" :src="richtext.url" class="pillar-image" :key="index" />
+                        <h4 v-if="richtext.type === 'heading3'" :key="index" class="role-title">
+                            {{ richtext.text }}
+                        </h4>
+                        <div v-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="role-item">
+                            {{ richtext.text }}
+                        </div>
+                    </template>
 	    		</div>
 	    	</div>
     	</div>
@@ -81,10 +89,10 @@ export default
 }
 
 .pillar-wrapper p {
-    margin: 12px 0;
-    font-family: $font-family-base;
+    font-weight: 100;
     font-size: 20px;
     line-height: 1.7;
+    margin: 12px 0;
 }
 
 .pillar-wrapper .roles {
@@ -103,11 +111,29 @@ export default
     color: white;
 }
 
-.pillar-wrapper h4 {
-    font-size: 55px;
-    font-weight: normal;
-    margin: 12px 0;
-    color: white;
+// .pillar-wrapper h4 {
+//     font-size: 55px;
+//     font-weight: normal;
+//     margin: 12px 0;
+//     color: white;
+// }
+
+.role-title {
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+.role-item {
+    font-size: 18px;
+    font-weight: 100;
+    margin-bottom: 1px;
+    line-height: 1.7;
+    letter-spacing: .5px;
+}
+.pillar-image {
+    max-height: 200px;
+    margin-bottom: 36px;
 }
 
 .pillar-left {
@@ -117,5 +143,15 @@ export default
 .pillar-right {
   width: 66.666%;
 }
+
+.two-up {
+    margin-bottom: 15px;
+    padding: 0 5% 0 0;
+}
+
+.four-up {
+    padding: 0 2% 0 0;
+}
+
 
 </style>

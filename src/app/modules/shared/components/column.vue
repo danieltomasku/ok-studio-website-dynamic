@@ -12,12 +12,11 @@
                     v-for="(item, index) in content.items"
                     :key="index"
                 >
-	    			<!-- <prismic-rich-text :field="item.column_body" /> -->
                     <template v-for="(richtext, index) in item.column_body">
                         <h4 v-if="richtext.type === 'heading3'" :key="index" class="role-title">
                             {{ richtext.text }}
                         </h4>
-                        <div v-if="richtext.type === 'list-item'" :key="index" class="role-item">
+                        <div v-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="role-item">
                             {{ richtext.text }}
                         </div>
                     </template>

@@ -143,14 +143,15 @@ export default
 }
 
 .next-project-eyebrow {
-    display: block;
     font-size: 20px;
+    font-weight: 100;
 }
 
 .next-project-title {
+    display: inline-block;
     font-size: 70px;
     margin: 4px 0 0;
-    font-weight: 400;
+    font-weight: 300;
     color: white;
 }
 

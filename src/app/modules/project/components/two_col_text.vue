@@ -72,14 +72,14 @@ export default
 
 .project-title {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 100;
     margin-bottom: 21px;
     letter-spacing: .5px;
 }
 
 .project-tagline {
     font-size: 60px;
-    font-weight: 300;
+    font-weight: 100;
     padding: 0px 20px 0 0px;
 }
 
@@ -88,7 +88,7 @@ export default
 }
 
 .project-description {
-    font-weight: 300;
+    font-weight: 100;
     font-size: 20px;
     line-height: 1.7;
     letter-spacing: .5px;
