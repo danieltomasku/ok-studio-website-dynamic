@@ -1,14 +1,8 @@
 <template>
     <div class="section-wrapper">
-    	<div class="container pad-4-v">
-	    	<div class="container -nowrap">
-	    		<div class="col-12">
-	    			<video autoplay="" muted="" loop="" playsinline="" preload="auto">
-				        <source class="" type="video/mp4" :src="content.primary.video.url">
-			      </video>
-		    	</div>
-	    	</div>
-    	</div>
+        <video autoplay="" muted="" loop="" playsinline="" preload="auto">
+            <source class="" type="video/mp4" :src="content.primary.video.url">
+        </video>
 	</div>
 </template>
 

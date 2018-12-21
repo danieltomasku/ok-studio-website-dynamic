@@ -1,17 +1,27 @@
 <template>
     <div class="section-wrapper">
     	<div class="container">
+
+            <!-- Eyebrow -->
     		<div class="col-12" v-if="content.primary.eyebrow">
     			<h3 class="project-title">{{ content.primary.eyebrow }}</h3>
 	    	</div>
+
+
 	    	<div class="container -nowrap">
+
+                <!-- Title -->
 	    		<div class="col">
 	    			<prismic-rich-text class="project-tagline" :field="content.primary.rich_text_left" />
 	    		</div>
+
+                <!-- Description -->
 	    		<div class="col description">
-	    			<prismic-rich-text class="project-description" :field="content.primary.rich_text_right" />
+	    			<prismic-rich-text class="section-description" :field="content.primary.rich_text_right" />
 	    		</div>
+
 	    	</div>
+
     	</div>
 	</div>
 </template>
@@ -79,13 +89,6 @@ export default
 
 .description {
     padding: 12px 60px 0px 60px;
-}
-
-.project-description {
-    font-weight: 100;
-    font-size: 20px;
-    line-height: 1.7;
-    letter-spacing: .5px;
 }
 
 </style>

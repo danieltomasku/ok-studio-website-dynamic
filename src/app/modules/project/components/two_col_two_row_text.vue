@@ -1,8 +1,9 @@
 <template>
     <div class="section-wrapper">
-    	<div class="container">
-	    	<div class="container -nowrap">
+    	<div class="container -nowrap">
 	    		<div class="col-6 left-column">
+
+                    <!-- Top Text -->
 		    		<div class="top-row">
                         <template v-for="(richtext, index) in content.primary.rich_text_top">
                             <div v-if="richtext.type === 'heading3'" :key="index" class="section-title">
@@ -13,6 +14,8 @@
                             </div>
                         </template>
 		    		</div>
+
+                    <!-- Bottom Text -->
 		    		<div class="">
                         <template v-for="(richtext, index) in content.primary.rich_text_bottom">
                             <div v-if="richtext.type === 'heading3'" :key="index" class="section-title">
@@ -24,12 +27,13 @@
                         </template>
 		    		</div>
 		    	</div>
+
+                <!-- Rich Text -->
 		    	<div class="col-6 right-column">
 		    		<div class="">
 		    			<prismic-rich-text :field="content.primary.rich_text_right" />
 		    		</div>
 		    	</div>
-	    	</div>
     	</div>
 	</div>
 </template>
@@ -57,10 +61,7 @@ export default
 	// 	...
 	///////////////////////////////////////////////////////
 
-	"mounted": function()
-	{
-		// console.log( this.$props.content );
-	},
+	"mounted": function(){},
 
 	"destroyed": function(){},
 

@@ -11,10 +11,10 @@
                     :key="index"
                 >
                     <template v-for="(richtext, index) in item.column_body">
-                        <h4 v-if="richtext.type === 'heading3'" :key="index" class="role-title">
+                        <h4 v-if="richtext.type === 'heading3'" :key="index" class="column-heading">
                             {{ richtext.text }}
                         </h4>
-                        <div v-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="role-item">
+                        <div v-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="column-body">
                             {{ richtext.text }}
                         </div>
                     </template>
@@ -75,20 +75,6 @@ export default
 .col {
     padding: 0 3% 0 0;
     margin-bottom: 15px;
-}
-
-.role-title {
-    font-weight: 600;
-    margin-bottom: 12px;
-    font-size: 18px;
-}
-
-.role-item {
-    font-size: 18px;
-    font-weight: 100;
-    margin-bottom: 1px;
-    line-height: 1.7;
-    letter-spacing: .5px;
 }
 
 </style>

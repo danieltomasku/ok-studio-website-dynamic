@@ -1,16 +1,20 @@
 <template>
     <div class="dark-theme" v-if="content" :style="{background: `linear-gradient( to bottom, ${content.bg_gradient_start}, ${content.bg_gradient_finish})`}">
         <div class="about-hero">
+
+            <!-- Hero Title -->
             <div class="hero-title">
                 {{ content.hero_text[0].text }}
             </div>
-            <div class="about-contact roles">
-                <div class="role">
+
+            <!-- Contact Information -->
+            <div class="about-contact-wrapper container">
+                <div class="col-4">
                     <template v-for="(item, index) in content.contact_info">
-                        <div class="role-title" v-if="item.type == 'heading2'" :key="index">
+                        <div class="column-heading" v-if="item.type == 'heading2'" :key="index">
                             {{ item.text }}
                         </div>
-                        <div class="role-item" v-if="item.type == 'paragraph'" :key="index">
+                        <div class="column-body" v-if="item.type == 'paragraph'" :key="index">
                             {{ item.text }}
                         </div>
                     </template>
@@ -19,6 +23,7 @@
             <!-- <img class="about-shape" src="images/about-shape.png"/> -->
         </div>
 
+        <!-- Slice Zone -->
         <div class="pad-5-v" v-if="content">
             <component
                 v-for="(item, index) in content.body"
@@ -128,51 +133,18 @@ export default
 
 .hero-title {
     font-size: 5.2vw;
-    font-family: $font-family-base;
     font-weight: 900;
-    color: white;
     position: relative;
     padding: 0 17% 55px 0;
 }
 
-.about-contact {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 18px;
-    padding: 0;
-    font-family: $font-family-base;
-    color: white;
-}
-
-.roles {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: 18px;
+.about-contact-wrapper {
     padding-top: 12px;
 }
 
-.role {
-    font-size: 18px;
-    width: 20%;
-    display: inline-block;
+.about-contact {
     margin-bottom: 15px;
 }
-
-.role-title {
-    font-family: $font-family-base;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 12px;
-}
-
-.role-item {
-    font-family: $font-family-base;
-    font-weight: 100;
-    line-height: 1.7;
-    letter-spacing: .5px;
-    margin-bottom: 1px;
-}
-
 
 
 </style>

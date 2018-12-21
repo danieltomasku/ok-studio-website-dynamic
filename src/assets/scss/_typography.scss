@@ -136,6 +136,18 @@ h6, .h6
     overflow: auto;
 }
 
+.column-heading {
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.column-body {
+    font-weight: 100;
+    line-height: 1.7;
+    letter-spacing: .5px;
+    margin-bottom: 1px;
+}
+
 //  #######################################################
 //  #   P
 //  #######################################################
