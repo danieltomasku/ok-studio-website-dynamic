@@ -1,7 +1,5 @@
 <template>
-    <div
-        :class="[theme === 'Dark' ? 'dark-theme' : 'light-theme', 'section-wrapper']"
-    >
+    <div class="section-wrapper">
     	<div class="container pad-4-v">
     		<div class="col-12" v-if="content.primary.title[0]">
     			<h3 class="section-title">{{ content.primary.title[0].text }}</h3>
@@ -76,12 +74,8 @@ export default
 
 .col {
     padding: 0 3% 0 0;
+    margin-bottom: 15px;
 }
-
-.dark-theme {
-    color: white;
-}
-
 
 .role-title {
     font-weight: 600;

@@ -1,7 +1,5 @@
 <template>
-    <div
-        :class="[theme === 'Dark' ? 'dark-theme' : 'light-theme', 'section-wrapper']"
-    >
+    <div class="section-wrapper">
     	<div class="container">
     		<div class="col-12" v-if="content.primary.eyebrow">
     			<h3 class="project-title">{{ content.primary.eyebrow }}</h3>
@@ -65,10 +63,6 @@ export default
 ///////////////////////////////////////////////////////////
 // 	...
 ///////////////////////////////////////////////////////////
-
-.dark-theme {
-    color: white;
-}
 
 .project-title {
     font-size: 20px;

@@ -15,7 +15,6 @@
                 v-for="(item, index) in content.body"
                 :is="componentTypeForContent( item )"
                 :content="item"
-                :theme="content.theme_type"
                 :key="index">
             </component>
 
@@ -135,11 +134,6 @@ export default
     object-fit: cover;
     height: 100vh;
     width: 100%;
-}
-
-.dark-theme {
-    color: white;
-    overflow: auto;
 }
 
 .next-project-eyebrow {

@@ -1,12 +1,6 @@
 <template>
-    <div class="">
-    	<div class="container pad-4-v">
-	    	<div class="container -nowrap">
-	    		<div class="col-12">
-	    			<prismic-image :field="content.primary.image" class="" />
-		    	</div>
-	    	</div>
-    	</div>
+    <div class="section-wrapper">
+      <prismic-image :field="content.primary.image" />
 	</div>
 </template>
 
@@ -54,8 +48,6 @@ export default
 // 	...
 ///////////////////////////////////////////////////////////
 
-.template
-{}
 
 
 </style>

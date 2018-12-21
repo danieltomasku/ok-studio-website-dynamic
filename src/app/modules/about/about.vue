@@ -114,14 +114,6 @@ export default
 //  ...
 ///////////////////////////////////////////////////////////
 
-header {
-    mix-blend-mode: unset;
-}
-
-.menu-button {
-    mix-blend-mode: unset;
-}
-
 .about-hero {
     position: relative;
     top: 0;
