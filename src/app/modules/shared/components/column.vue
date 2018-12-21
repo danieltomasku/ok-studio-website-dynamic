@@ -40,7 +40,7 @@ export default
 	{
 		return {}
 	},
-	"props" : ["content", "theme"],
+	"props" : ["content"],
 	"watch" : {},
 
 	///////////////////////////////////////////////////////
