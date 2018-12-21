@@ -20,7 +20,7 @@
                     </template>
                 </div>
             </div>
-            <!-- <img class="about-shape" src="images/about-shape.png"/> -->
+            <img class="about-shape" :src="content.background_shape.url" />
         </div>
 
         <!-- Slice Zone -->
@@ -136,14 +136,25 @@ export default
     font-weight: 900;
     position: relative;
     padding: 0 17% 55px 0;
+    z-index: 1;
 }
 
 .about-contact-wrapper {
     padding-top: 12px;
+    position: relative;
+    z-index: 1;
 }
 
 .about-contact {
     margin-bottom: 15px;
+}
+
+.about-shape {
+    position: absolute;
+    top: -355px;
+    left: -250px;
+    width: 100vw;
+    z-index: 0;
 }
 
 
