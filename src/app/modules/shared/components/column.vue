@@ -1,12 +1,23 @@
 <template>
-    <div class="">
+    <div class="section-wrapper">
     	<div class="container pad-4-v">
     		<div class="col-12" v-if="content.primary.title[0]">
-    			<h3>{{ content.primary.title[0].text }}</h3>
+    			<h3 class="section-title">{{ content.primary.title[0].text }}</h3>
 	    	</div>
 	    	<div class="container -nowrap">
-	    		<div class="col" v-for=" item in content.items">
-	    			<prismic-rich-text :field="item.column_body" />
+	    		<div
+                    class="col"
+                    v-for="(item, index) in content.items"
+                    :key="index"
+                >
+                    <template v-for="(richtext, index) in item.column_body">
+                        <h4 v-if="richtext.type === 'heading3'" :key="index" class="column-heading">
+                            {{ richtext.text }}
+                        </h4>
+                        <div v-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="column-body">
+                            {{ richtext.text }}
+                        </div>
+                    </template>
 	    		</div>
 	    	</div>
     	</div>
@@ -61,8 +72,9 @@ export default
 // 	...
 ///////////////////////////////////////////////////////////
 
-.template
-{}
-
+.col {
+    padding: 0 3% 0 0;
+    margin-bottom: 15px;
+}
 
 </style>

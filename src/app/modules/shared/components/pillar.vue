@@ -1,15 +1,34 @@
 <template>
-    <div class="">
-    	<div class="container pad-4-v">
-    		<div class="col-12" v-if="content.primary.section_title[0]">
+    <div class="section-wrapper">
+    	<div class="container pillar-wrapper">
+
+            <!-- Pillar Heading -->
+    		<div
+                :class="[content.primary.full_width === 'Full Width' ? 'col-12 pad-8-bottom' : 'col-4']"
+                v-if="content.primary.section_title[0]"
+            >
     			<h3>{{ content.primary.section_title[0].text }}</h3>
 	    	</div>
-	    	<div class="container -nowrap">
-                <div class ="col" v-if="content.primary.rich_text[0]">
+
+            <!-- Pillar Body -->
+	    	<div :class="[content.primary.full_width === 'Full Width' ? 'col-12' : 'col-8', 'container']">
+                <div class ="col-12 pad-8-bottom" v-if="content.primary.rich_text[0]">
                     <p>{{ content.primary.rich_text[0].text }}</p>
                 </div>
-	    		<div class="col" v-for="item in content.items">
-	    			<prismic-rich-text :field="item.column_body" />
+	    		<div
+                    :class="[content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3 four-up' : content.items.length === 3 ? 'col-4' : 'col-6 two-up']"
+                    v-for="(item, index) in content.items"
+                    :key="index"
+                >
+                    <template v-for="(richtext, index) in item.column_body">
+                        <img v-if="richtext.type === 'image'" :src="richtext.url" class="pillar-image" :key="index" />
+                        <h4 v-if="richtext.type === 'heading3'" :key="index" class="column-heading">
+                            {{ richtext.text }}
+                        </h4>
+                        <div v-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="column-body">
+                            {{ richtext.text }}
+                        </div>
+                    </template>
 	    		</div>
 	    	</div>
     	</div>
@@ -64,8 +83,37 @@ export default
 // 	...
 ///////////////////////////////////////////////////////////
 
-.template
-{}
+.pillar-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pillar-wrapper p {
+    font-weight: 100;
+    font-size: 20px;
+    line-height: 1.7;
+    margin: 12px 0;
+}
+
+.pillar-wrapper h3 {
+    font-weight: 800;
+    font-size: 55px;
+    margin: 0;
+}
+
+.pillar-image {
+    max-height: 200px;
+    margin-bottom: 36px;
+}
+
+.two-up {
+    margin-bottom: 15px;
+    padding: 0 5% 0 0;
+}
+
+.four-up {
+    padding: 0 2% 0 0;
+}
 
 
 </style>

@@ -1,30 +1,36 @@
 <template>
-    <div class="">
+    <div class="dark-theme" v-if="content" :style="{background: `linear-gradient( to bottom, ${content.bg_gradient_start}, ${content.bg_gradient_finish})`}">
+        <div class="about-hero">
 
-        <div class="pad-5-v" v-if="content">
-            <div class="container">
-                <h1 class="col-12">{{ content.hero_text[0].text }}</h1>
-                <div
-                    class="col-12"
-                    v-for="(item, index) in content.contact_info"
-                    :key="index + '-contact'"
-                >
-                    <strong v-if="item.type == 'heading2'">
-                        {{ item.text }}
-                    </strong>
-                    <span v-if="item.type == 'paragraph'">
-                        {{ item.text }}
-                    </span>
-                </div>
-
-                <component  class="margin-4-v"
-                            v-for="(item, index) in content.body"
-                            :is="componentTypeForContent( item )"
-                            :content="item"
-                            :key="index">
-                </component>
-
+            <!-- Hero Title -->
+            <div class="hero-title">
+                {{ content.hero_text[0].text }}
             </div>
+
+            <!-- Contact Information -->
+            <div class="about-contact-wrapper container">
+                <div class="col-4">
+                    <template v-for="(item, index) in content.contact_info">
+                        <div class="column-heading" v-if="item.type == 'heading2'" :key="index">
+                            {{ item.text }}
+                        </div>
+                        <div class="column-body" v-if="item.type == 'paragraph'" :key="index">
+                            {{ item.text }}
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <img class="about-shape" :src="content.background_shape.url" />
+        </div>
+
+        <!-- Slice Zone -->
+        <div class="pad-5-v" v-if="content">
+            <component
+                v-for="(item, index) in content.body"
+                :is="componentTypeForContent( item )"
+                :content="item"
+                :key="index">
+            </component>
         </div>
 
     </div>
@@ -112,6 +118,44 @@ export default
 ///////////////////////////////////////////////////////////
 //  ...
 ///////////////////////////////////////////////////////////
+
+.about-hero {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s;
+    background-color: transparent;
+    padding: 30vh 100px 0;
+}
+
+.hero-title {
+    font-size: 5.2vw;
+    font-weight: 900;
+    position: relative;
+    padding: 0 17% 55px 0;
+    z-index: 1;
+}
+
+.about-contact-wrapper {
+    padding-top: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.about-contact {
+    margin-bottom: 15px;
+}
+
+.about-shape {
+    position: absolute;
+    top: -355px;
+    left: -250px;
+    width: 100vw;
+    z-index: 0;
+}
 
 
 </style>

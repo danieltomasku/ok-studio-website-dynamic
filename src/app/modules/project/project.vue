@@ -2,29 +2,26 @@
     <div class="">
 
         <div
-            class="pad-5-v"
             v-if="content"
+            :class="[content.theme_type === 'Dark' ? 'dark-theme' : 'light-theme' ]"
             :style="{ backgroundColor: content.project_color }"
         >
 
-
             <div class="container">
-                <div class="col-12">
-                    <prismic-image :field="content.hero_image" class="" />
-                </div>
+                <prismic-image :field="content.hero_image" class="project-hero" />
             </div>
 
-            <component  class="margin-4-v"
-                        v-for="(item, index) in content.body"
-                        :is="componentTypeForContent( item )"
-                        :content="item"
-                        :key="index">
-                        </component>
+            <component
+                v-for="(item, index) in content.body"
+                :is="componentTypeForContent( item )"
+                :content="item"
+                :key="index">
+            </component>
 
-            <div class="container">
+            <div class="section-wrapper container">
                 <div class="col-12 h-text-right">
-                    <h6>Next Project</h6>
-                    <router-link :to=" '/project/' + content.next_project.uid ">{{ content.next_project.data.project_title[0].text }}</router-link>
+                    <h6 class="next-project-eyebrow">Next Project</h6>
+                    <router-link :to=" '/project/' + content.next_project.uid " class="next-project-title">{{ content.next_project.data.project_title[0].text }}</router-link>
                 </div>
             </div>
 
@@ -132,6 +129,26 @@ export default
 ///////////////////////////////////////////////////////////
 //  ...
 ///////////////////////////////////////////////////////////
+
+.project-hero {
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.next-project-eyebrow {
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.next-project-title {
+    display: inline-block;
+    font-size: 70px;
+    margin: 4px 0 0;
+    font-weight: 300;
+    color: white;
+}
+
 
 
 </style>
