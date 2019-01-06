@@ -11,12 +11,23 @@
                     :key="index"
                 >
                     <template v-for="(richtext, index) in item.column_body">
+
+                        <img v-if="richtext.type === 'image'" :src="richtext.url" class="pillar-image" :key="index" />
+
+                        <!-- Column Heading -->
                         <h4 v-if="richtext.type === 'heading3'" :key="index" class="column-heading">
                             {{ richtext.text }}
                         </h4>
+
+                        <!-- Column Body (Paragraph) -->
                         <div v-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="column-body">
                             {{ richtext.text }}
                         </div>
+
+                        <!-- Column Body (Ordered List Item) -->
+                        <ul v-if="richtext.type === 'o-list-item'" :key="index" class="column-body">
+                            <li>{{index}}. {{ richtext.text }}</li>
+                        </ul>
                     </template>
 	    		</div>
 	    	</div>
@@ -75,6 +86,11 @@ export default
 .col {
     padding: 0 3% 0 0;
     margin-bottom: 15px;
+}
+
+.pillar-image {
+    max-height: 200px;
+    margin-bottom: 36px;
 }
 
 </style>

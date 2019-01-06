@@ -1,20 +1,27 @@
 <template>
-    <div class="">
+    <div
+        class="dark-theme"
+        v-if="content"
+        :style="{background: `linear-gradient( to bottom, ${content.bg_gradient_start}, ${content.bg_gradient_finish})`}"
+    >
 
-        <div class="pad-5-v" v-if="content">
-            <div class="container">
-                <h1 class="col-12">{{ content.hero_text[0].text }}</h1>
-
-                <component  class="margin-4-v"
-                            v-for="(item, index) in content.body"
-                            :is="componentTypeForContent( item )"
-                            :content="item"
-                            :key="index">
-                </component>
-
+        <!-- Hero Section -->
+        <div class="hero-wrapper">
+            <!-- Hero Title -->
+            <div class="hero-title">
+                {{ content.hero_text[0].text }}
             </div>
         </div>
 
+        <!-- Slice Zone -->
+        <div class="pad-5-v" v-if="content">
+            <component
+                v-for="(item, index) in content.body"
+                :is="componentTypeForContent( item )"
+                :content="item"
+                :key="index">
+            </component>
+        </div>
     </div>
 </template>
 
@@ -100,6 +107,8 @@ export default
 ///////////////////////////////////////////////////////////
 //  ...
 ///////////////////////////////////////////////////////////
+
+
 
 
 </style>
