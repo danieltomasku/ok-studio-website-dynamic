@@ -23,6 +23,33 @@
     z-index: 1;
 }
 
+.cta-wrapper {
+    position: relative;
+    display: block;
+    width: auto;
+    margin: 24px 0;
+}
+
+.cta {
+    display: inline-block;
+    width: auto;
+    color: white;
+    font-size: 13px;
+    font-weight: 100;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid white;
+    background-color: transparent;
+    padding: 17px 40px;
+    transition: .3s ease-in-out;
+}
+
+.cta:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
 //	#######################################################
 //	# Vars
 //	#######################################################

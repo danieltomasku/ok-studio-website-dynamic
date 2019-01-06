@@ -2,7 +2,7 @@
     <div class="dark-theme" v-if="content">
 
             <!-- Shop Hero -->
-            <div class="shop-hero" :style="{ height: '100vh', backgroundImage: `url(${content.hero_image.url})`, backgroundSize: 'cover'}">
+            <div class="shop-hero" :style="{ backgroundImage: `url(${content.hero_image.url})` }">
                 <div class="shop-hero-text-wrapper">
                     <h1 class="shop-title">{{ content.hero_headline[0].text }}</h1>
                     <prismic-rich-text class="shop-description" :field="content.hero_subhead" />
@@ -129,6 +129,7 @@ export default
     padding: 30vh 100px 0;
     background-size: cover;
     background-position: center center;
+    min-height: 420px;
 }
 
 .shop-hero-text-wrapper {

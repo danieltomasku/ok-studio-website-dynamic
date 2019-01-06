@@ -24,7 +24,7 @@
                         <img v-if="richtext.type === 'image'" :src="richtext.url" class="pillar-image" :key="index" />
 
                         <template v-else-if="richtext.spans[0]">
-                            <div v-if="richtext.spans[0].data.url === 'https://workbyok.studio'" :key="index" class="cta-wrapper">
+                            <div v-if="richtext.spans[0].data.url === 'https://workbyok.studio'" :key="index" class=" column-cta cta-wrapper">
                                 <div class="cta">{{ richtext.text }}</div>
                             </div>
                         </template>
@@ -123,6 +123,10 @@ export default
 
 .four-up {
     padding: 0 2% 0 0;
+}
+
+.column-cta {
+    margin-top: 42px;
 }
 
 
