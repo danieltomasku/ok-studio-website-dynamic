@@ -126,7 +126,7 @@ export default
 }
 
 .column-cta {
-    margin-top: 42px;
+    margin-top: 50px;
 }
 
 
