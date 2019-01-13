@@ -2,7 +2,7 @@
     <div class="section-wrapper">
     	<div class="container pillar-wrapper">
 
-            <!-- Pillar Heading -->
+            <!-- Pillar Large Heading -->
     		<div
                 :class="[content.primary.full_width === 'Full Width' ? 'col-12 pad-8-bottom' : 'col-4']"
                 v-if="content.primary.section_title[0]"
@@ -12,22 +12,32 @@
 
             <!-- Pillar Body -->
 	    	<div :class="[content.primary.full_width === 'Full Width' ? 'col-12' : 'col-8', 'container']">
-                <div class ="col-12 pad-8-bottom" v-if="content.primary.rich_text[0]">
-                    <p>{{ content.primary.rich_text[0].text }}</p>
+                <div class ="col-12" v-if="content.primary.rich_text">
+                    <p v-for="(richtext, index) in content.primary.rich_text" :key="index">{{ richtext.text }}</p>
                 </div>
 	    		<div
-                    :class="[content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3 four-up' : content.items.length === 3 ? 'col-4' : 'col-6 two-up']"
+                    :class="[content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3 four-up' : content.items.length === 3 ? 'col-4' : 'col-6 two-up', 'pad-8-top']"
                     v-for="(item, index) in content.items"
                     :key="index"
                 >
                     <template v-for="(richtext, index) in item.column_body">
                         <img v-if="richtext.type === 'image'" :src="richtext.url" class="pillar-image" :key="index" />
-                        <h4 v-if="richtext.type === 'heading3'" :key="index" class="column-heading">
+
+                        <template v-else-if="richtext.spans[0]">
+                            <div v-if="richtext.spans[0].data.url === 'https://workbyok.studio'" :key="index" class=" column-cta cta-wrapper">
+                                <div class="cta">{{ richtext.text }}</div>
+                            </div>
+                        </template>
+
+                        <h4 v-else-if="richtext.type === 'heading3'" :key="index" class="column-heading">
                             {{ richtext.text }}
                         </h4>
-                        <div v-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="column-body">
+                        <div v-else-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="column-body">
                             {{ richtext.text }}
                         </div>
+                        <ul v-else-if="richtext.type === 'o-list-item'" :key="index" class="column-body">
+                            <li>{{index}}. {{ richtext.text }}</li>
+                        </ul>
                     </template>
 	    		</div>
 	    	</div>
@@ -113,6 +123,10 @@ export default
 
 .four-up {
     padding: 0 2% 0 0;
+}
+
+.column-cta {
+    margin-top: 50px;
 }
 
 

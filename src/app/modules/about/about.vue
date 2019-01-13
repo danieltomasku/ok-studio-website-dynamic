@@ -1,6 +1,6 @@
 <template>
     <div class="dark-theme" v-if="content" :style="{background: `linear-gradient( to bottom, ${content.bg_gradient_start}, ${content.bg_gradient_finish})`}">
-        <div class="about-hero">
+        <div class="hero-wrapper">
 
             <!-- Hero Title -->
             <div class="hero-title">
@@ -119,25 +119,6 @@ export default
 //  ...
 ///////////////////////////////////////////////////////////
 
-.about-hero {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    transition: opacity 1s;
-    background-color: transparent;
-    padding: 30vh 100px 0;
-}
-
-.hero-title {
-    font-size: 5.2vw;
-    font-weight: 900;
-    position: relative;
-    padding: 0 17% 55px 0;
-    z-index: 1;
-}
 
 .about-contact-wrapper {
     padding-top: 12px;

@@ -3,6 +3,52 @@
 //		Describes the main structural layout of the page
 //	#######################################################
 
+.hero-wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s;
+    background-color: transparent;
+    padding: 30vh 100px 0;
+}
+
+.hero-title {
+    font-size: 5.2vw;
+    font-weight: 900;
+    position: relative;
+    padding: 0 17% 55px 0;
+    z-index: 1;
+}
+
+.cta-wrapper {
+    position: relative;
+    display: block;
+    width: auto;
+    margin: 24px 0;
+}
+
+.cta {
+    display: inline-block;
+    width: auto;
+    color: white;
+    font-size: 13px;
+    font-weight: 100;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid white;
+    background-color: transparent;
+    padding: 17px 40px;
+    transition: .3s ease-in-out;
+}
+
+.cta:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
 
 //	#######################################################
 //	# Vars
