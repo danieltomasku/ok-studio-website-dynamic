@@ -23,6 +23,7 @@
 						<input type="email" name="email" :placeholder="content.subscribe_text">
 						<input type="submit" value="Send" style="display: none" />
 						<input type="hidden" name="bot-field" />
+						<input type="hidden" name="form-name" value="stay-updated" />
 					</form>
     			</div>
     		</div>
