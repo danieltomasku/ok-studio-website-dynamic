@@ -276,7 +276,17 @@ export default
         font-weight: 300;
         font-size: 4.6vw;
         line-height: 1.4;
+
+
+        @media (max-width: $bp-size-md) {
+            font-size: 6vw;
+            width: 100%;
+	    }
     }
+
+    @media (max-width: $bp-size-md) {
+        width: 90%;
+	}
 }
 
 

@@ -149,6 +149,11 @@ export default
     position: relative;
     padding: 0;
     margin-bottom: 10px;
+
+    @media (max-width: $bp-size-md) {
+        font-size: 10vw;
+        margin-bottom: 20px;
+	}
 }
 
 .shop-description {

@@ -106,11 +106,6 @@ export default
 
     @media (max-width: $bp-size-md) {
         padding: 0;
-	}
-}
-
-.block-img {
-    @media (max-width: $bp-size-md) {
         margin-bottom: 50px;
 	}
 }

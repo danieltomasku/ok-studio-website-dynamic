@@ -4,7 +4,7 @@
 
             <!-- Pillar Large Heading -->
     		<div
-                :class="[content.primary.full_width === 'Full Width' ? 'col-12 pad-8-bottom' : 'col-4', 'col-tablet-12']"
+                :class="[content.primary.full_width === 'Full Width' ? 'col-12' : 'col-4', 'col-tablet-12']"
                 v-if="content.primary.section_title[0]"
             >
     			<h3>{{ content.primary.section_title[0].text }}</h3>
@@ -16,7 +16,7 @@
                     <p v-for="(richtext, index) in content.primary.rich_text" :key="index">{{ richtext.text }}</p>
                 </div>
 	    		<div
-                    :class="[content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3 four-up' : content.items.length === 3 ? 'col-4' : 'col-6 two-up', 'pad-8-top']"
+                    :class="[content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3 four-up' : content.items.length === 3 ? 'col-4' : 'col-6 two-up', 'pad-8-top', 'col-tablet-12']"
                     v-for="(item, index) in content.items"
                     :key="index"
                 >
@@ -118,6 +118,12 @@ export default
 .pillar-image {
     max-height: 200px;
     margin-bottom: 36px;
+
+    @media (max-width: $bp-size-md) {
+        max-height: 200px;
+        margin: 0px auto 36px;
+        display: block;
+	}
 }
 
 .two-up {
@@ -127,6 +133,17 @@ export default
 
 .four-up {
     padding: 0 2% 0 0;
+
+    @media (max-width: $bp-size-lg) {
+        width: 50%;
+        padding: 0 2% 5% 0;
+    }
+
+    @media (max-width: $bp-size-md) {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+
 }
 
 .column-cta {
