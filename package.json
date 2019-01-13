@@ -30,6 +30,7 @@
     "url-loader": "",
     "vue": "^2.2.6",
     "vue-analytics": "^5.16.1",
+    "vue-flickity": "^1.1.2",
     "vue-loader": "",
     "vue-meta": "^1.5.6",
     "vue-router": "^2.7.0",
