@@ -16,6 +16,17 @@ routes = routes.concat( require("@modules/project/routes.js") );
 routes = routes.concat( require("@modules/about/routes.js") );
 routes = routes.concat( require("@modules/workshops/routes.js") );
 routes = routes.concat( require("@modules/shop/routes.js") );
+routes.push(
+{
+	path: '/contact',
+	beforeEnter: (to, from, next) => 
+	{
+		// Show the contact form (see shared/contact-form component)
+		window.toggleContactForm();
+		// Cancel route
+		next( false );
+	}
+});
 
 // Create router instance
 let router = new VueRouter( { mode: 'history', "routes" : routes } );

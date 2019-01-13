@@ -24,8 +24,8 @@
                         <img v-if="richtext.type === 'image'" :src="richtext.url" class="pillar-image" :key="index" />
 
                         <template v-else-if="richtext.spans[0]">
-                            <div v-if="richtext.spans[0].data.url === 'https://workbyok.studio'" :key="index" class=" column-cta cta-wrapper">
-                                <div class="cta">{{ richtext.text }}</div>
+                            <div v-if="richtext.spans[0].type === 'hyperlink' " :key="index" class=" column-cta cta-wrapper">
+                                <prismic-link class="cta" :field="richtext.spans[0].data">{{ richtext.text }}</prismic-link>
                             </div>
                         </template>
 
