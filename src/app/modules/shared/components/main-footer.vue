@@ -17,7 +17,12 @@
     				<a class="footer-link-item" target="_blank" :href="item.link.url">{{ item.label }}</a>
     			</div>
     			<div class="pad-2-top">
-    				<input :placeholder="content.subscribe_text" />
+    				<!-- inquire@workbyok.studio -->
+					<!-- <form method="POST" action="https://formspree.io/azeven@gmail.com"> -->
+					<form method="POST" name="stay-updated" data-netlify="true">
+						<input type="email" name="email" :placeholder="content.subscribe_text">
+						<input type="submit" value="Send" style="display: none" />
+					</form>
     			</div>
     		</div>
     	</div>

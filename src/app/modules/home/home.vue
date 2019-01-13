@@ -72,13 +72,15 @@
                     </h1>
 
                     <!-- E-mail Link -->
-                    <div class="say-hello" onclick="toggleForm(this)" v-if="content">
+                    <div class="say-hello" @click="$refs.form.toggleForm()" v-if="content">
                         {{ content.contact_text }} <span class="say-hello-arrow">→</span>
                     </div>
 
                 </div>
             </section>
         </div>
+
+        <contact-form ref="form"></contact-form>
 
     </div>
 </template>
@@ -89,7 +91,10 @@
 
 export default
 {
-    "components": {},
+    "components": 
+    {
+        "contact-form"      : require("@modules/shared/components/contact-form.vue").default,
+    },
 
     ///////////////////////////////////////////////////////
     //  ...
@@ -213,7 +218,7 @@ export default
                 // Assign content
                 this.content = response.data;
             });
-        },
+        }
     },
     "computed" : {},
 }
