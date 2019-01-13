@@ -9,7 +9,7 @@
 
             <!-- Contact Information -->
             <div class="about-contact-wrapper container">
-                <div class="col-4">
+                <div class="col-4 col-tablet-12">
                     <template v-for="(item, index) in content.contact_info">
                         <div class="column-heading" v-if="item.type == 'heading2'" :key="index">
                             {{ item.text }}
@@ -24,7 +24,7 @@
         </div>
 
         <!-- Slice Zone -->
-        <div class="pad-5-v" v-if="content">
+        <div v-if="content">
             <component
                 v-for="(item, index) in content.body"
                 :is="componentTypeForContent( item )"

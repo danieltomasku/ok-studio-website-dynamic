@@ -14,7 +14,7 @@
         </div>
 
         <!-- Slice Zone -->
-        <div class="pad-5-v" v-if="content">
+        <div v-if="content">
             <component
                 v-for="(item, index) in content.body"
                 :is="componentTypeForContent( item )"

@@ -4,14 +4,14 @@
 
             <!-- Pillar Large Heading -->
     		<div
-                :class="[content.primary.full_width === 'Full Width' ? 'col-12 pad-8-bottom' : 'col-4']"
+                :class="[content.primary.full_width === 'Full Width' ? 'col-12 pad-8-bottom' : 'col-4', 'col-tablet-12']"
                 v-if="content.primary.section_title[0]"
             >
     			<h3>{{ content.primary.section_title[0].text }}</h3>
 	    	</div>
 
             <!-- Pillar Body -->
-	    	<div :class="[content.primary.full_width === 'Full Width' ? 'col-12' : 'col-8', 'container']">
+	    	<div :class="[content.primary.full_width === 'Full Width' ? 'col-12' : 'col-8', 'container', 'col-tablet-12']">
                 <div class ="col-12" v-if="content.primary.rich_text">
                     <p v-for="(richtext, index) in content.primary.rich_text" :key="index">{{ richtext.text }}</p>
                 </div>
@@ -109,6 +109,10 @@ export default
     font-weight: 800;
     font-size: 55px;
     margin: 0;
+
+    @media (max-width: $bp-size-md) {
+        margin-bottom: 20px;
+	}
 }
 
 .pillar-image {

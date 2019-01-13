@@ -1,12 +1,17 @@
 <template>
     <div class="section-wrapper">
-    	<div class="container pad-4-v">
-    		<div class="col-12" v-if="content.primary.title[0]">
-    			<h3 class="section-title">{{ content.primary.title[0].text }}</h3>
-	    	</div>
-	    	<div class="container -nowrap">
+    	<div class="container">
+            <div class="col-12" v-if="content.primary.title[0]">
+                <h3
+                    v-if="content.primary.title[0].text"
+                    class="section-title"
+                >
+                    {{ content.primary.title[0].text }}
+                </h3>
+            </div>
+	    	<div class="container columns-wrapper">
 	    		<div
-                    class="col"
+                    class="col col-tablet-12"
                     v-for="(item, index) in content.items"
                     :key="index"
                 >
@@ -86,6 +91,12 @@ export default
 .col {
     padding: 0 3% 0 0;
     margin-bottom: 15px;
+    flex: 1;
+
+    @media (max-width: $bp-size-md) {
+        flex: none;
+        margin-bottom: 48px;
+	}
 }
 
 .pillar-image {
