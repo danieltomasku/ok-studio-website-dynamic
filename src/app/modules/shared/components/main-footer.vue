@@ -19,9 +19,10 @@
     			<div class="pad-2-top">
     				<!-- inquire@workbyok.studio -->
 					<!-- <form method="POST" action="https://formspree.io/azeven@gmail.com"> -->
-					<form method="POST" name="stay-updated" data-netlify="true">
+					<form method="POST" name="stay-updated" data-netlify="true" data-netlify-honeypot="bot-field">
 						<input type="email" name="email" :placeholder="content.subscribe_text">
 						<input type="submit" value="Send" style="display: none" />
+						<input type="hidden" name="bot-field" />
 					</form>
     			</div>
     		</div>
