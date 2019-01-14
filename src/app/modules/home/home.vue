@@ -20,13 +20,13 @@
                 </ul>
 
                 <!-- Hover Area for Mouse Slider Navigation -->
-                <!-- <ul class="slides-control">
-                                            <li class="slide-backward"></li>
-                                            <li class="slide-forward"></li>
-                                        </ul> -->
+                <ul class="slides-control">
+                    <li class="slide-backward"></li>
+                    <li class="slide-forward"></li>
+                </ul>
 
                 <!-- Slide Dots -->
-                <!-- <ul class="slide-dots"></ul> -->
+                <ul class="slide-dots"></ul>
             </section>
 
             <!-- Home Intro -->
@@ -191,6 +191,87 @@ export default
                 item.classList.remove('show');
             });
         }
+
+
+
+
+// HOME PAGE CLICK-THROUGH SLIDER
+var autoplay;
+function enableAutoPlay() {
+  autoplay = setInterval(handleSlideForward, 7000);
+}
+
+function disableAutoPlay() {
+  clearInterval(autoplay);
+  autoplay = setInterval(handleSlideForward, 15000);
+}
+const landingProjects = Array.from(document.querySelectorAll('.landing-project'));
+const activeProject = landingProjects[0];
+
+const slideForward = document.querySelector('.slide-forward');
+const slideBackward = document.querySelector('.slide-backward');
+
+let slideIndex;
+let slideTotal;
+if (slideForward) {
+  slideForward.addEventListener('click', function() {
+    handleSlideForward();
+    disableAutoPlay();
+  });
+  slideBackward.addEventListener('click', handleSlideBackward);
+  slideIndex = 0;
+  slideTotal = landingProjects.length;
+  function handleSlideForward() {
+    const slideDots = document.querySelectorAll('.slide-dot');
+    landingProjects[slideIndex].classList.remove('-active');
+    landingProjects[(slideIndex+1) % slideTotal].classList.add('-active');
+    slideDots[slideIndex].classList.remove('-active');
+    slideDots[(slideIndex+1) % slideTotal].classList.add('-active');
+    slideIndex = (slideIndex+1) % slideTotal;
+  }
+
+  function handleSlideBackward() {
+    const slideDots = document.querySelectorAll('.slide-dot');
+    const itemActive = slideIndex === 0 ? slideTotal - 1 : Math.abs(slideIndex - 1);
+    landingProjects[slideIndex].classList.remove('-active');
+    landingProjects[itemActive].classList.add('-active');
+    slideDots[slideIndex].classList.remove('-active');
+    slideDots[itemActive].classList.add('-active');
+    slideIndex = itemActive;
+    disableAutoPlay();
+  }
+}
+function makeDots() {
+  const slideDotsWrapper = document.querySelector('.slide-dots');
+
+  for (i = 0; i < landingProjects.length; i++) {
+    const dot = document.createElement('li');
+    dot.classList.add('slide-dot');
+    i === 0 && dot.classList.add('-active');
+    slideDotsWrapper.append(dot);
+  }
+  const slideDots = Array.from(document.querySelectorAll('.slide-dot'));
+  slideDots.forEach(item => {
+    item.addEventListener('click', function (event) {
+      handleDotClick(event);
+    });
+  });
+}
+
+function handleDotClick(e) {
+  const slideDots = Array.from(document.querySelectorAll('.slide-dot'));
+  const slideDotsWrapper = document.querySelector('.slide-dots');
+  const dotIndex = Array.prototype.indexOf.call(slideDotsWrapper.children, e.target);
+  const itemActive = slideIndex === 0 ? slideTotal - 1 : Math.abs(slideIndex);
+  landingProjects[slideIndex].classList.remove('-active');
+  landingProjects[dotIndex].classList.add('-active');
+  slideDots[slideIndex].classList.remove('-active');
+  slideDots[dotIndex].classList.add('-active');
+  slideIndex = dotIndex;
+  disableAutoPlay();
+}
+
+
     },
 
     "destroyed": function(){},
@@ -250,12 +331,74 @@ export default
   display: block;
   width: 100%;
   height: 100%;
-//   opacity: 0;
   z-index: 1;
   transition: opacity 1s;
   background-size: cover;
   background-position: center center;
 }
+
+.slide-dots {
+  position: absolute;
+  bottom: 6%;
+  right: 50px;
+  display: inline-block;
+  z-index: 10;
+  mix-blend-mode: difference;
+}
+
+.slide-dots li {
+  width: 24px;
+  padding: 10px 0;
+  height: 0px;
+  border-radius: 0px;
+  display: inline-block;
+  margin-right: 11px;
+  opacity: .3;
+}
+
+.slide-dots li:after {
+  content: '';
+  display: block;
+  background-color: white;
+  width: 100%;
+  height: 2px;
+  z-index: 1000;
+}
+
+.slide-dots li:hover {
+  cursor: pointer;
+}
+
+.slide-dots li.-active {
+  opacity: 1;
+}
+
+
+.slide-backward {
+  position: fixed;
+  width: 25vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.slide-forward {
+  position: fixed;
+  width: 25vw;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+// .slide-backward:hover {
+//   cursor: url('images/cursor-arrow-prev.png') 32 32, auto;
+//   cursor: -webkit-image-set(url('images/cursor-arrow-prev-lo.png') 1x, url('images/cursor-arrow-prev.png') 2x) 32 32, pointer; /* Webkit */
+// }
+// .slide-forward:hover {
+//   cursor: url('images/cursor-arrow-next.png') 32 32, auto;
+//   cursor: -webkit-image-set(url('images/cursor-arrow-next-lo.png') 1x, url('images/cursor-arrow-next.png') 2x) 32 32, pointer; /* Webkit */
+// }
 
 .page-content {
     margin-top: 100vh;
