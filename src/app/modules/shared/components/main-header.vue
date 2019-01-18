@@ -106,19 +106,25 @@ header {
 
 	&.headroom--not-top
 	{
-		height: 70px;
+		height: 50px;
 
 		.logo 
 		{
 			transform: translateY(-50%);
 			transition-property: transform;
 
+			svg
+			{
+				transform: scale(0.7) translateX(-10px);
+			}
+
 			// svg { fill: black; }
 		}
 
 		& + .menu-button
 		{
-			top: 24px;
+			top: 14px;
+			transform: scale(0.7);
 		}
 
 		.white-bar
@@ -148,6 +154,7 @@ header {
 
 	svg {
 		fill: white;
+		transition: transform $nav-animation-timing $nav-animation-duration;
 	}
 }
 
@@ -160,13 +167,16 @@ header {
 	width: 100%;
 	height: 100%;
 
-	background: white;
+	background: rgba(255,255,255,0.96);
 	
 	opacity: 0;
 	transition: opacity $nav-animation-timing $nav-animation-duration;
 }
 
 .menu-button {
+
+	transition: transform $nav-animation-timing $nav-animation-duration,
+				opacity $nav-animation-timing $nav-animation-duration !important;
 
 	padding: 0;
 	position: fixed;
@@ -187,10 +197,12 @@ header {
 	@media (max-width: $bp-size-md) {
 		right: 25px;
 	}
+
 }
 
 .menu-button:hover {
 	cursor: pointer;
+	opacity: 0.3 !important;
 }
 
 .menu-button:focus {
