@@ -284,6 +284,13 @@ export default
 	top: 48%;
 	position: absolute;
 	-webkit-overflow-scrolling: touch;
+
+    @media (max-width: $bp-size-md) {
+        height: auto;
+        width: 100%;
+        overflow: auto;
+        padding: 0 25px;
+	}
 }
 
 // Social Icons Styles
@@ -297,6 +304,11 @@ export default
 	position: absolute;
 	bottom: 3%;
 	right: 50px;
+
+    @media (max-width: $bp-size-md) {
+        margin-top: 50px;
+        right: 25px;
+	}
 }
 
 .social-icons-item {
