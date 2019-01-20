@@ -91,7 +91,7 @@ export default
         getContent ()
         {
             // Get article
-            this.$prismic.client.getByUID('project', this.$props.id, { 'fetchLinks': ['project.project_title', 'project.carousel_image'] } )
+            this.$prismic.client.getByUID('project', this.$props.id, { 'fetchLinks': ['project.project_title', 'project.carousel_image', 'project.carousel_cursor_hover'] } )
             // Handle article
             .then( (response, error) =>
             {
