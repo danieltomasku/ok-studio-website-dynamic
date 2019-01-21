@@ -1,7 +1,7 @@
 <template>
     <div class="section-wrapper">
-    	<div class="container -nowrap">
-	    		<div class="col-6 left-column">
+    	<div class="container">
+	    		<div class="col-6 col-tablet-12 left-column">
 
                     <!-- Top Text -->
 		    		<div class="top-row">
@@ -29,7 +29,7 @@
 		    	</div>
 
                 <!-- Rich Text -->
-		    	<div class="col-6 right-column">
+		    	<div class="col-6 col-tablet-12 right-column">
 		    		<div class="">
 		    			<prismic-rich-text :field="content.primary.rich_text_right" />
 		    		</div>
@@ -82,6 +82,12 @@ export default
 ///////////////////////////////////////////////////////////
 // 	...
 ///////////////////////////////////////////////////////////
+.container {
+    @media (max-width: $bp-size-md) {
+        flex-direction: column-reverse;
+	}
+}
+
 
 .top-row {
     margin-bottom: 120px;
@@ -89,10 +95,19 @@ export default
 
 .left-column {
     padding-right: 8%;
+
+    @media (max-width: $bp-size-md) {
+        padding: 0;
+	}
 }
 
 .right-column {
     padding-left: 8%;
+
+    @media (max-width: $bp-size-md) {
+        padding: 0;
+        margin-bottom: 50px;
+	}
 }
 
 </style>

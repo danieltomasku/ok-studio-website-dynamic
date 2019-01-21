@@ -15,7 +15,7 @@
             <!-- Shop Grid -->
             <div class="shop-grid-wrapper container">
                 <!-- Grid Item -->
-                <div class="col-6" v-for="(item,index) in content.grid_items" :key="index">
+                <div class="col-6 col-tablet-12" v-for="(item,index) in content.grid_items" :key="index">
                     <prismic-link :field="item.grid_link">
                         <div
                             class="shop-grid-item one"
@@ -149,6 +149,11 @@ export default
     position: relative;
     padding: 0;
     margin-bottom: 10px;
+
+    @media (max-width: $bp-size-md) {
+        font-size: 10vw;
+        margin-bottom: 20px;
+	}
 }
 
 .shop-description {
@@ -189,6 +194,10 @@ export default
     font-size: 60px;
     font-weight: 800;
     margin: 16px;
+
+    @media (max-width: $bp-size-md) {
+        font-size: 28px;
+	}
 }
 
 .shop-grid-cta {
