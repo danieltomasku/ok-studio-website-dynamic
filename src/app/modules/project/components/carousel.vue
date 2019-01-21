@@ -2,11 +2,11 @@
     <div class="carousel">
 		<div class="carousel-wrapper">
 			<p ref="status" class="carousel-status"></p>
-			<flickity ref="flickity" class="main-carousel" :options="flickityOptions">
+			<div ref="carousel" class="main-carousel" >
 				<div class="carousel-cell" v-for="item in content.items">
 					<prismic-image :field="item.image" class="carousel-image" />
 				</div>
-			</flickity>
+			</div>
 		</div>
 	</div>
 </template>
@@ -15,11 +15,10 @@
 
 <script>
 
-import Flickity from 'vue-flickity';
+import Flickity from 'flickity';
 
 export default
 {
-	"components": { Flickity },
 
 	///////////////////////////////////////////////////////
 	// 	...
@@ -27,21 +26,15 @@ export default
 
 	data ()
 	{
-		var isMobile = matchMedia('screen and (max-width: 768px)').matches;
 		return {
-			flickityOptions: 
-			{
-				contain: false,
-				pageDots: false,
-				imagesLoaded: true,
-				draggable: isMobile
-			}
+			"flkty" : null,
 		}
 	},
 	"props" : ["content"],
 	"watch" : 
 	{
-		content ( value ) { this.reset() },
+		// Recreate flickity when content changes
+		content ( value ) { this.createFlickity() },
 	},
 
 	///////////////////////////////////////////////////////
@@ -50,18 +43,7 @@ export default
 
 	"mounted": function()
 	{
-		let flickity = this.$refs.flickity;
-		let carousel = this.$refs.flickity.$el;
-		let carouselStatus = this.$refs.status;
-
-		function updateStatus() 
-		{
-			var slideNumber = flickity.selectedIndex() + 1;
-			carouselStatus.textContent = slideNumber + ' / ' + flickity.slides().length;
-		}
-		updateStatus();
-
-		this.$refs.flickity.on( 'select', updateStatus );
+		this.createFlickity()
 	},
 
 	"destroyed": function(){},
@@ -72,10 +54,28 @@ export default
 
 	"methods" : 
 	{
-		reset ()
+		createFlickity ()
 		{
-			// Go to the first slide
-			this.$refs.flickity.selectCell( 0, false, true );
+			// Init flickity
+			var isMobile = matchMedia('screen and (max-width: 768px)').matches;
+			let options =
+			{
+				contain: false,
+				pageDots: false,
+				imagesLoaded: false,
+				draggable: isMobile
+			}
+			this.flkty = new Flickity( this.$refs.carousel, options );
+			// Update slide count status on change
+			this.flkty.on( 'select', this.updateStatus );
+			this.updateStatus();
+			// Select first slide
+			this.flkty.selectCell( 0, false, true );
+		},
+
+		updateStatus()
+		{
+			this.$refs.status.textContent = this.flkty.selectedIndex + 1 + ' / ' + this.flkty.slides.length;
 		},
 	},
 	"computed" : {},
@@ -91,6 +91,12 @@ export default
 // 	...
 ///////////////////////////////////////////////////////////
 
+.carousel
+{
+	margin: 200px 0;
+}
+
+.carousel * {  outline: none;  }
 
 .carousel-status {
   font-family: GTWalsheim, sans-serif;
@@ -111,7 +117,6 @@ export default
   width: 100%;
   font-family: GTWalsheim;
   font-weight: 100;
-  margin: 200px 0;
 }
 
 .carousel-cell {
@@ -143,6 +148,7 @@ export default
 .carousel
 {
 	.flickity-prev-next-button {
+	  position: absolute;
 	  top: 50%;
 	  width: 50%;
 	  opacity: 0 !important;
