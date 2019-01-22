@@ -60,7 +60,7 @@ export default
 	"mounted": function()
 	{
 		// Start autoplay, but after delay for loading screen
-		window.setTimeout( this.startAutoplay, 2000 );
+		window.setTimeout( () => { this.startAutoplay(7000) }, 2000 );
 	},
 
 	"destroyed": function(){},
@@ -107,18 +107,21 @@ export default
 			this.cancelAutoplay();
 		},
 
-		startAutoplay()
+		startAutoplay( delay )
 		{
+			// Bail if already autoplaying
+			if( this.autoplayInterval ) return;			
 			// Advance slide every X seconds
-			this.autoplayInterval = window.setInterval( this.next, 7000 );
+			this.autoplayInterval = window.setInterval( this.next, delay );
 		},
 
 		cancelAutoplay()
 		{
 			// Stop auto advance
 			window.clearInterval( this.autoplayInterval );
+			this.autoplayInterval = null;
 			// Resume it after X seconds
-			window.setTimeout( this.startAutoplay, 15000 );
+			this.startAutoplay( 15000 );
 		},
 	},
 
