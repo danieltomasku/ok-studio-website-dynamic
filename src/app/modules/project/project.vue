@@ -15,7 +15,7 @@
                 v-for="(item, index) in content.body"
                 :is="componentTypeForContent( item )"
                 :content="item"
-                :key="index">
+                :key=" index+'-'+id ">
             </component>
 
             <div class="section-wrapper container">

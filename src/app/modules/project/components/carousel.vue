@@ -15,7 +15,7 @@
 
 <script>
 
-import Flickity from 'flickity';
+import Flickity from 'flickity-imagesloaded';
 
 export default
 {
@@ -34,7 +34,13 @@ export default
 	"watch" : 
 	{
 		// Recreate flickity when content changes
-		content ( value ) { this.createFlickity() },
+		content ( value ) 
+		{ 
+			// If exists, destry it
+			if( this.flkty ) this.flkty.destroy();
+			// Recreate based on new content
+			window.setTimeout( this.createFlickity, 500 );
+		},
 	},
 
 	///////////////////////////////////////////////////////
@@ -62,7 +68,7 @@ export default
 			{
 				contain: false,
 				pageDots: false,
-				imagesLoaded: false,
+				imagesLoaded: true,
 				draggable: isMobile
 			}
 			this.flkty = new Flickity( this.$refs.carousel, options );
