@@ -76,7 +76,6 @@ export default
 
 footer {
 	position: relative;
-	z-index: 101;;
 	font-weight: 600;
 	font-size: 14px;
 	background-color: black;

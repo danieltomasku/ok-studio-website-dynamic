@@ -19,6 +19,7 @@
     "express": "^4.15.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "",
+    "gsap": "^2.0.2",
     "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.4",
     "mini-css-extract-plugin": "^0.4.0",
