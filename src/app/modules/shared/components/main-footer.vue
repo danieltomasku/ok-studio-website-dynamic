@@ -1,17 +1,17 @@
 <template>
     <footer class="wrapper pad-8-v">
     	<div class="container -fluid" v-if="content">
-    		<div class="col-6 col-tablet-12">
+    		<div class="col-6 col-tablet-12 footer-column">
     			&copy; {{ currentYear }} OK Studio
     		</div>
-    		<div class="col-3 col-tablet-12">
+    		<div class="col-3 col-tablet-12 footer-column">
 				<span class="footer-column-label">Inquiries</span><br/>
     			<div class="">
     				<a class="footer-link-item">{{ content.contact_email }}</a>
     			</div>
     			<a class="footer-link-item" :href="'tel:' + content.contact_phone">T {{ content.contact_phone }}</a>
     		</div>
-    		<div class="col-3 col-tablet-12">
+    		<div class="col-3 col-tablet-12 footer-column">
 				<span class="footer-column-label">Follow</span><br/>
     			<div class="" v-for="item in content.social_links" :key="item.label">
     				<a class="footer-link-item" target="_blank" :href="item.link.url">{{ item.label }}</a>
@@ -81,7 +81,6 @@ export default
 
 footer {
 	position: relative;
-	z-index: 101;;
 	font-weight: 600;
 	font-size: 14px;
 	background-color: black;
@@ -117,6 +116,10 @@ input {
 a[href^="tel"] {
     color: inherit !important;
     text-decoration: none;
+}
+
+.footer-column {
+    margin: 18px 0;
 }
 
 .footer-column-label {

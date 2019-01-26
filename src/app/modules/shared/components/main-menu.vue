@@ -250,7 +250,13 @@ export default
 	text-align: right;
 	line-height: 1;
 	font-weight: 300;
-	transition: color .6s;
+    transition: color .6s;
+
+    @media (max-width: $bp-size-md) {
+        margin-top: 42px;
+        font-size: 48px;
+        line-height: 30px;
+	}
 }
 
 .menu-item:hover {
@@ -278,6 +284,13 @@ export default
 	top: 48%;
 	position: absolute;
 	-webkit-overflow-scrolling: touch;
+
+    @media (max-width: $bp-size-md) {
+        height: auto;
+        width: 100%;
+        overflow: auto;
+        padding: 0 25px;
+	}
 }
 
 // Social Icons Styles
@@ -291,6 +304,11 @@ export default
 	position: absolute;
 	bottom: 3%;
 	right: 50px;
+
+    @media (max-width: $bp-size-md) {
+        margin-top: 50px;
+        right: 25px;
+	}
 }
 
 .social-icons-item {
@@ -346,7 +364,12 @@ export default
 	font-weight: 300;
 	pointer-events: auto;
 	cursor: pointer;
-	position: relative;
+    position: relative;
+
+    @media (max-width: $bp-size-md) {
+        font-size: 38px;
+        margin: 20px 0;
+	}
 }
 
 .index-title:before, .index-title:after {
@@ -356,7 +379,11 @@ export default
 	height: 5px;
 	top: 50%;
 	margin-top: -0.5px;
-	background: #fff;
+    background: #fff;
+
+    @media (max-width: $bp-size-md) {
+        display: none;
+	}
 }
 
 .index-title:before {

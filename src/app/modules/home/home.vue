@@ -1,33 +1,7 @@
 <template>
-    <div class="">
-        
         <div>
             <!-- Landing Slider -->
-
-            <section class="landing-slide">
-                <ul class="slides" v-if="content">
-                    <router-link
-                        v-for="item in content.carousel_items"
-                        :key="item.uid"
-                        :to=" '/project/' + item.home_carousel_item.uid "
-                    >
-                        <li
-                            class="landing-project"
-                            :style="{ backgroundImage: `url(${item.home_carousel_item.data.carousel_image.url})` }"
-                        >
-                        </li>
-                    </router-link>
-                </ul>
-
-                <!-- Hover Area for Mouse Slider Navigation -->
-                <!-- <ul class="slides-control">
-                                            <li class="slide-backward"></li>
-                                            <li class="slide-forward"></li>
-                                        </ul> -->
-
-                <!-- Slide Dots -->
-                <!-- <ul class="slide-dots"></ul> -->
-            </section>
+            <slider v-if="content" :content="content.carousel_items"></slider>
 
             <!-- Home Intro -->
             <section class="page-content">
@@ -79,8 +53,6 @@
                 </div>
             </section>
         </div>
-
-    </div>
 </template>
 
 ***********************************************************
@@ -92,6 +64,7 @@ export default
     "components": 
     {
         "contact-form"      : require("@modules/shared/components/contact-form.vue").default,
+        "slider"            : require("./components/slider.vue").default,
     },
 
     ///////////////////////////////////////////////////////
@@ -194,6 +167,8 @@ export default
                 item.classList.remove('show');
             });
         }
+
+
     },
 
     "destroyed": function(){},
@@ -207,14 +182,14 @@ export default
         getContent ()
         {
             // Get content from prismic API
-            this.$prismic.client.getSingle( 'homepage', { 'fetchLinks': ['project.project_title', 'project.carousel_image'] } )
+            this.$prismic.client.getSingle( 'homepage', { 'fetchLinks': ['project.project_title', 'project.carousel_image', 'project.carousel_cursor_hover'] } )
             // Handle response
             .then( (response, error) =>
             {
                 // Print if error
                 if( error ) console.error( error );
                 // Assign content
-                this.content = response.data;
+                this.content = response.data;                
             });
         },
     },
@@ -230,35 +205,6 @@ export default
 ///////////////////////////////////////////////////////////
 //  ...
 ///////////////////////////////////////////////////////////
-.slides {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.landing-slide {
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-.landing-project {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-//   opacity: 0;
-  z-index: 1;
-  transition: opacity 1s;
-  background-size: cover;
-  background-position: center center;
-}
 
 .page-content {
     margin-top: 100vh;
@@ -279,10 +225,18 @@ export default
         font-weight: 300;
         font-size: 4.6vw;
         line-height: 1.4;
+
+
+        @media (max-width: $bp-size-md) {
+            font-size: 6vw;
+            width: 100%;
+	    }
     }
+
+    @media (max-width: $bp-size-md) {
+        width: 90%;
+	}
 }
-
-
 
 /* Emoji Word Replacement */
 

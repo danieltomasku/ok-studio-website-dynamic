@@ -147,6 +147,10 @@ export default
     margin: 4px 0 0;
     font-weight: 300;
     color: white;
+
+    @media (max-width: $bp-size-md) {
+        font-size: 50px;
+	}
 }
 
 

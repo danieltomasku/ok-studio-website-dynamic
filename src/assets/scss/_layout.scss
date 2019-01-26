@@ -13,6 +13,10 @@
     transition: opacity 1s;
     background-color: transparent;
     padding: 30vh 100px 0;
+
+    @media (max-width: $bp-size-md) {
+        padding: 125px 25px 0;
+	}
 }
 
 .hero-title {
@@ -21,6 +25,11 @@
     position: relative;
     padding: 0 17% 55px 0;
     z-index: 1;
+
+    @media (max-width: $bp-size-md) {
+        font-size: 10vw;
+        padding: 0 0 30px;
+	}
 }
 
 .cta-wrapper {
