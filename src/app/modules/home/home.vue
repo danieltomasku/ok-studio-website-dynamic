@@ -46,9 +46,9 @@
                     </h1>
 
                     <!-- E-mail Link -->
-                    <div class="say-hello" onclick="toggleForm(this)" v-if="content">
+                    <router-link to="/contact" class="say-hello" @click="toggleForm()" v-if="content">
                         {{ content.contact_text }} <span class="say-hello-arrow">→</span>
-                    </div>
+                    </router-link>
 
                 </div>
             </section>
@@ -63,6 +63,7 @@ export default
 {
     "components": 
     {
+        "contact-form"      : require("@modules/shared/components/contact-form.vue").default,
         "slider"            : require("./components/slider.vue").default,
     },
 
@@ -326,6 +327,8 @@ export default
   font-size: 18px;
   margin: 64px 0;
   text-align: center;
+  color: $color-text;
+  display: block;
 }
 
 .say-hello-arrow {

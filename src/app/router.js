@@ -16,9 +16,30 @@ routes = routes.concat( require("@modules/project/routes.js") );
 routes = routes.concat( require("@modules/about/routes.js") );
 routes = routes.concat( require("@modules/workshops/routes.js") );
 routes = routes.concat( require("@modules/shop/routes.js") );
+routes.push(
+{
+	path: '/contact',
+	beforeEnter: (to, from, next) => 
+	{
+		// Show the contact form (see shared/contact-form component)
+		window.toggleContactForm();
+		// Cancel route
+		next( false );
+	}
+});
 
 // Create router instance
-let router = new VueRouter( { mode: 'history', "routes" : routes } );
+let router = new VueRouter( 
+	{ 
+		"mode" : "history", 
+		"routes" : routes,
+		"scrollBehavior" : (to, from, savedPosition) => 
+		{
+			// Scroll to top of screen
+			return { x: 0, y: 0 };
+		}
+	} 
+);
 
 ///////////////////////////////////////////////////////////
 //  ...
@@ -28,9 +49,6 @@ router.beforeEach((to, from, next) =>
 {
 	// Reset page title
 	store.commit("updatePageTitle", null);
-	// Scroll to the top when new page is loaded
-	// Add delay to allow for DOM to be rewritten before scrolling top
-	window.setTimeout( ()=> { window.scrollTo(0, 0); }, 10 );
 	next();
 });
 

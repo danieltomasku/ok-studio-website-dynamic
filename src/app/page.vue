@@ -7,6 +7,7 @@
 		</div>
     	<router-view ref="outlet"></router-view>
     	<main-footer></main-footer>
+    	<contact-form></contact-form>
         <back-to-top v-if="$route.path !== '/'" />
 	</div>
 </template>
@@ -21,6 +22,7 @@ export default
     {
         "main-header"   : require("@modules/shared/components/main-header.vue").default,
         "main-footer"   : require("@modules/shared/components/main-footer.vue").default,
+        "contact-form"	: require("@modules/shared/components/contact-form.vue").default,
         "back-to-top"   : require("@modules/shared/components/back-to-top.vue").default,
     },
 

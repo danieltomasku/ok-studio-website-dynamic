@@ -1,12 +1,15 @@
 <template>
-	<div>
+	<div class="wrapper">
 		<!-- Logo -->
-		<header>
-			<div class="logo">
-				<router-link to="/">
-					<svg width="50" viewBox="0 0 478 271" xmlns="http://www.w3.org/2000/svg"><g fill-rule="nonzero"><path d="M135.95 270.92c-74.41 0-135-60.54-135-135C.95 61.46 61.49.97 135.95.97c74.46 0 135 60.54 135 135 0 74.46-60.59 134.95-135 134.95zm0-238.92c-57.437614 0-104 46.562386-104 104s46.562386 104 104 104 104-46.562386 104-104c-.044102-57.4225744-46.577435-103.9648559-104-104.02V32zM365.33 135.95L475.59 270.9h-37.36l-112.3-134.95L438.23 1h39.06z"/></g></svg>
-				</router-link>
+		<header ref="header">
+			<div class="header-wrapper">
+				<div class="logo">
+					<router-link to="/">
+						<svg width="50" viewBox="0 0 478 271" xmlns="http://www.w3.org/2000/svg"><g fill-rule="nonzero"><path d="M135.95 270.92c-74.41 0-135-60.54-135-135C.95 61.46 61.49.97 135.95.97c74.46 0 135 60.54 135 135 0 74.46-60.59 134.95-135 134.95zm0-238.92c-57.437614 0-104 46.562386-104 104s46.562386 104 104 104 104-46.562386 104-104c-.044102-57.4225744-46.577435-103.9648559-104-104.02V32zM365.33 135.95L475.59 270.9h-37.36l-112.3-134.95L438.23 1h39.06z"/></g></svg>
+					</router-link>
+				</div>
 			</div>
+			<div class="white-bar"></div>
 		</header>
 
 		<!-- Menu Button -->
@@ -23,6 +26,8 @@
 ***********************************************************
 
 <script>
+
+import Headroom from "headroom.js";
 
 export default
 {
@@ -46,7 +51,12 @@ export default
 	// 	...
 	///////////////////////////////////////////////////////
 
-	"mounted": function(){},
+	"mounted": function()
+	{
+		let headroom = new Headroom( this.$refs.header );
+		headroom.init();
+	},
+
 	"destroyed": function(){},
 
 	///////////////////////////////////////////////////////
@@ -75,6 +85,9 @@ export default
 // 	...
 ///////////////////////////////////////////////////////////
 
+$nav-animation-timing: ease-out;
+$nav-animation-duration: 0.35s;
+
 header {
 	font-family: $font-family-base;
 	font-weight: bold;
@@ -85,6 +98,45 @@ header {
 	position: fixed;
 	top: 0;
 	z-index: 101;
+	
+
+	transition-timing-function: $nav-animation-timing;
+	transition-duration: $nav-animation-duration;
+	transition-property: height, background, mix-blend-mode;
+
+	&.headroom--not-top
+	{
+		height: 50px;
+
+		.logo 
+		{
+			transform: translateY(-50%);
+			transition-property: transform;
+
+			svg
+			{
+				transform: scale(0.7) translateX(-10px);
+			}
+
+			// svg { fill: black; }
+		}
+
+		& + .menu-button
+		{
+			top: 14px;
+			transform: scale(0.7);
+		}
+
+		.white-bar
+		{
+			opacity: 1;
+		}
+
+	}
+}
+
+.header-wrapper
+{
 	padding: 0 50px;
 	mix-blend-mode: difference;
 
@@ -93,7 +145,8 @@ header {
 	}
 }
 
-.logo {
+.logo 
+{
 	position: absolute;
 	display: inline-block;
 	transform: translateY(-36%);
@@ -101,31 +154,59 @@ header {
 
 	svg {
 		fill: white;
+		transition: transform $nav-animation-timing $nav-animation-duration;
 	}
+}
+
+.white-bar
+{
+	position: absolute;
+	z-index: -1;
+
+	
+	width: 100%;
+	height: 100%;
+
+	background: rgba(255,255,255,0.96);
+	
+	opacity: 0;
+	transition: opacity $nav-animation-timing $nav-animation-duration;
+}
+
+.menu-button {
+
+	transition: transform $nav-animation-timing $nav-animation-duration,
+				opacity $nav-animation-timing $nav-animation-duration !important;
+
+	padding: 0;
+	position: fixed;
+	top: 36px;
+	right: 50px;
+
+	font-weight: normal;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	z-index: 199;
+	background-color: transparent;
+	border: none;
+	mix-blend-mode: difference;
+
+	transition: top 0.25s ease-out;
+
+	@media (max-width: $bp-size-md) {
+		right: 25px;
+	}
+
 }
 
 .menu-button:hover {
 	cursor: pointer;
+	opacity: 0.3 !important;
 }
 
 .menu-button:focus {
 	outline: none;
-}
-
-.menu-line-wrapper {
-	height: 50px;
-	width: 50px;
-	padding: 0;
-	position: absolute;
-	top: 50%;
-	right: -13px;
-	transform: translate(-50px, -50%);
-}
-
-
-.menu-line-inner-wrapper {
-	width: 24px;
-	height: 24px;
 }
 
 .menu-line {
@@ -164,23 +245,6 @@ header {
 	mix-blend-mode: unset;
 }
 
-.menu-button {
-	font-weight: normal;
-	width: 24px;
-	height: 24px;
-	position: fixed;
-	right: 50px;
-	top: 35px;
-	display: inline-block;
-	z-index: 199;
-	transform: none;
-	background-color: transparent;
-	border: none;
-	mix-blend-mode: difference;
 
-	@media (max-width: $bp-size-md) {
-		right: 25px;
-	}
-}
 
 </style>

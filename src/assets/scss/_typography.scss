@@ -54,7 +54,12 @@ body
 
 .dark-theme {
     color: white;
-    overflow: auto;
+    overflow: hidden;
+}
+
+.light-theme {
+    color: $color-text;
+    overflow: hidden;
 }
 
 //  #######################################################

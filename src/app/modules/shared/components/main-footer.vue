@@ -17,7 +17,12 @@
     				<a class="footer-link-item" target="_blank" :href="item.link.url">{{ item.label }}</a>
     			</div>
     			<div class="pad-2-top">
-    				<input :placeholder="content.subscribe_text" />
+					<form method="POST" name="stay-updated" data-netlify="true" data-netlify-honeypot="bot-field">
+						<input type="email" name="email" :placeholder="content.subscribe_text">
+						<input type="submit" value="Send" style="display: none" />
+						<input type="hidden" name="bot-field" />
+						<input type="hidden" name="form-name" value="stay-updated" />
+					</form>
     			</div>
     		</div>
     	</div>
