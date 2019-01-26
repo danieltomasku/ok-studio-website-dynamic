@@ -90,131 +90,135 @@ export default
 ///////////////////////////////////////////////////////////
 
 .form-modal-wrapper {
-  width: 100vw;
-  height: 100vh;
-  color: black;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 216;
-  transition: transform 0.6s cubic-bezier(0.81, 0, 0.23, 0.99), opacity 1s;
-  overflow: auto;
-  transition: all .8s;
-  opacity: 0;
-  visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    color: black;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 216;
+    transition: transform 0.6s cubic-bezier(0.81, 0, 0.23, 0.99), opacity 1s;
+    overflow: auto;
+    transition: all .8s;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .form-modal-wrapper.move {
-  background-color: rgba(255, 255, 255, 0.95);
-  transform: translateX(0vw) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+    background-color: rgba(255, 255, 255, 0.95);
+    transform: translateX(0vw) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .form-wrapper {
-  width: 50vw;
-  height: auto;
-  padding: 48px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  background-image: url('#{$path-images}/form-background.png');
-  background-position: center center;
-  background-size: cover;
+    width: 50vw;
+    height: auto;
+    padding: 48px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-image: url('#{$path-images}/form-background.png');
+    background-position: center center;
+    background-size: cover;
 }
 
 .form-submit {
-  display: block;
-  border: 1px solid white;
-  background-color: transparent;
-  color: white;
-  font-family: GTWalsheim-Light, sans-serif;
-  padding: 12px 72px;
-  text-transform: uppercase;
-  font-size: 12px;
-  margin: 35px auto 0;
-  transition: background-color .3s ease-in-out, color .3s ease-in-out;
+    display: block;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    padding: 12px 72px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 35px auto 0;
+    transition: background-color .3s ease-in-out, color .3s ease-in-out;
+    font-family: $font-family-base;
+    font-weight: 300;
 }
 
 .form-submit:hover {
-  background-color: white;
-  color: black;
-  cursor: pointer;
+    background-color: white;
+    color: black;
+    cursor: pointer;
 }
 
 .close-form {
-  display: inline-block;
-  position: absolute;
-  right: 30px;
-  top: 30px;
+    display: inline-block;
+    position: absolute;
+    right: 30px;
+    top: 30px;
 }
 
 .close-form:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 form {
-  background-color: transparent;
-  border: none;
-  margin-top: 40px;
+    background-color: transparent;
+    border: none;
+    margin-top: 40px;
 }
 
 label {
-  color: white;
-  font-family: GTWalsheim, sans-serif;
-  margin: 18px 0 50px 0;
-  display: block;
+    font-family: $font-family-base;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+    margin: 18px 0 50px 0;
+    display: block;
 }
 
 textarea {
-  display: block;
-  margin: 35px 0 0 0px;
-  width: 100%;
-  height: 140px;
-  background-color: transparent;
-  border: 1px solid white;
-  box-shadow: none;
-  padding: 12px;
-  color: white;
-  font-family: GTWalsheim-Thin, sans-serif;
-  font-size: 17px;
+    display: block;
+    margin: 35px 0 0 0px;
+    width: 100%;
+    height: 140px;
+    background-color: transparent;
+    border: 1px solid white;
+    box-shadow: none;
+    padding: 12px;
+    color: white;
+    font-size: 17px;
+    font-family: $font-family-base;
+    font-weight: 100;
 }
 
 textarea:focus {
-  outline: none;
+    outline: none;
 }
 
 input {
-  background-color: transparent;
-  border-radius: unset;
-  border: none;
-  border-bottom: 1px solid white;
-  padding: 7px 0;
-  width: 100%;
-  color: white;
-  font-family: GTWalsheim-Thin, sans-serif;
-  font-size: 17px;
+    background-color: transparent;
+    border-radius: unset;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 7px 0;
+    width: 100%;
+    color: white;
+    font-size: 17px;
+    font-family: $font-family-base;
+    font-weight: 100;
 }
 
 input:focus {
-  outline: none;
-  border-bottom: 1px solid white;
+    outline: none;
+    border-bottom: 1px solid white;
 }
 
 
 @include breakpoint( $bp-mobile ) {
 
 	.form-wrapper {
-      width: 100vw;
-      height: 100%;
+        width: 100vw;
+        height: 100%;
     }
 
     label {
-      color: white;
-      font-family: GTWalsheim, sans-serif;
-      margin: 18px 0 40px 0;
-      display: block;
+        color: white;
+        margin: 18px 0 40px 0;
+        display: block;
     }
 }
 

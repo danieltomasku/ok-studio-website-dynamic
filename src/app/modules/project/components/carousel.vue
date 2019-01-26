@@ -63,7 +63,7 @@ export default
 		createFlickity ()
 		{
 			// Init flickity
-			var isMobile = matchMedia('screen and (max-width: 768px)').matches;
+			const isMobile = matchMedia('screen and (max-width: 768px)').matches;
 			let options =
 			{
 				contain: false,
@@ -81,7 +81,9 @@ export default
 
 		updateStatus()
 		{
-			this.$refs.status.textContent = this.flkty.selectedIndex + 1 + ' / ' + this.flkty.slides.length;
+            if (this.$refs.status) {
+                this.$refs.status.textContent = this.flkty.selectedIndex + 1 + ' / ' + this.flkty.slides.length;
+            }
 		},
 	},
 	"computed" : {},
