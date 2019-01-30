@@ -1,6 +1,6 @@
 <template>
     <div class="section-wrapper">
-        <video autoplay="" muted="" loop="" playsinline="" preload="auto">
+        <video ref="video" autoplay="" muted="" loop="" playsinline="" preload="auto">
             <source class="" type="video/mp4" :src="content.primary.video.url">
         </video>
 	</div>
