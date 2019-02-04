@@ -27,11 +27,30 @@ Vue.use( VueAnalytics, {
 
 Vue.config.productionTip = false;
 
+Vue.directive('infocus', {
+    isLiteral: true,
+    bind: (el, binding, vnode) => {
+        el.style.opacity = 0;
+    },
+    inserted: (el, binding, vnode) => {
+        const updateInView = () => {
+            const rect = el.getBoundingClientRect()
+            const inView = !((rect.top + rect.height < 0) || (rect.top > window.innerHeight - 180))
+            if (inView) {
+                el.classList.add(binding.value)
+                window.removeEventListener('scroll', updateInView)
+            }
+        }
+        window.addEventListener('scroll', updateInView)
+        updateInView()
+    }
+  });
+
 // Init app
 let app = new Vue(
 {
 	router,
-	store,
+    store,
 	render: (h) => h(Page),
 }
 ).$mount("#app");

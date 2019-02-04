@@ -1,5 +1,5 @@
 <template>
-    <div class="section-wrapper">
+    <div class="section-wrapper" v-infocus="'fade-up'">
         <video autoplay="" muted="" loop="" playsinline="" preload="auto">
             <source class="" type="video/mp4" :src="content.primary.video.url">
         </video>

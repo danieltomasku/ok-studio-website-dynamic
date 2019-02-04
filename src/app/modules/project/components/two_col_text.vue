@@ -1,5 +1,5 @@
 <template>
-    <div class="section-wrapper">
+    <div class="section-wrapper" v-infocus="'fade-up'">
     	<div class="container">
 
             <!-- Eyebrow -->
