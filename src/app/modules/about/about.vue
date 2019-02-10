@@ -136,6 +136,13 @@ export default
     left: -250px;
     width: 100vw;
     z-index: 0;
+
+    @media (max-width: $bp-size-md) {
+        position: absolute;
+        top: -12px;
+        left: -36px;
+        width: 84vw;
+    }
 }
 
 
