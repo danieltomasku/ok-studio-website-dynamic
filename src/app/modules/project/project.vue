@@ -4,7 +4,7 @@
         <div
             v-if="content"
             :class="[content.theme_type === 'Dark' ? 'dark-theme' : 'light-theme' ]"
-            :style="{ backgroundColor: content.project_color }"
+            :style="{ backgroundColor: backgroundColor }"
         >
 
             <div class="container">
@@ -52,7 +52,7 @@ export default
 
     data ()
     {
-        return { "content" : null };
+        return { "content" : null, "shouldColorShift" : false };
     },
     "props" : ["id"],
     "watch" :
@@ -78,9 +78,15 @@ export default
     {
         // Load content from prismic
         this.getContent();
+
+        // Listen for scroll events
+        window.addEventListener( "scroll", this.onScroll );
     },
 
-    "destroyed": function(){},
+    "destroyed": function()
+    {
+        window.removeEventListener( "scroll", this.onScroll );
+    },
 
     ///////////////////////////////////////////////////////
     //  ...
@@ -116,8 +122,42 @@ export default
             else if ( item.slice_type == "big_image" )              return "big-image";
             else if ( item.slice_type == "carousel" )               return "carousel";
         },
+
+        onScroll( event )
+        {
+            // Determine whether color should shift
+            this.shouldColorShift = _.reduce( this.$children, (sum, item, index) =>
+            {
+                // If its a two-col-text
+                if( item.$options._componentTag === "two-col-two-row-text" )
+                {
+                    // Get relative position of elem on screen
+                    let pos = item.$el.getBoundingClientRect().top;
+                    // Get the top margin of elem
+                    let margin = getComputedStyle(item.$el).marginTop.split("px")[0] * 1;
+                    // Offset for main-nav height
+                    let navOffset = 60;
+                    // Return whether its "in view" or "scrolled past"
+                    sum = ( pos - margin - navOffset ) < 0;
+                }
+
+                // Return sum
+                return sum;
+
+            }, false );
+        },
+
+        //
+
     },
-    "computed" : {},
+
+    "computed" : 
+    {
+        backgroundColor ()
+        {
+            return ( this.shouldColorShift ) ? this.content.color_shift : this.content.project_color;
+        },
+    },
 }
 </script>
 
