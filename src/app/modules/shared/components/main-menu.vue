@@ -164,11 +164,11 @@ export default
 			// Bail if they're already preloaded
 			if( this.isIndexImagesPreloaded ) return;
 
-			// Prelaod each project's background image
+			// Preload each project's background image
 			let images = [];
 			this.indexLinks.forEach( (item, index) => 
 			{
-				// Prealod image
+				// Preload image
 				images[index] = new Image();
 				images[index].src = item.image;
 			});
