@@ -1,5 +1,5 @@
 <template>
-    <div class="carousel">
+    <div class="carousel" v-infocus="'fade-up'">
 		<div class="carousel-wrapper">
 			<p ref="status" class="carousel-status"></p>
 			<div ref="carousel" class="main-carousel" >

@@ -31,6 +31,21 @@
 	}
 }
 
+.fade-up {
+    animation: fadeUp .8s forwards;
+}
+
+@keyframes fadeUp {
+    0% {
+        transform: translateY(15px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 //  #######################################################
 //  #   Padding
 //  #######################################################
