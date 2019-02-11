@@ -382,7 +382,6 @@ export default
 	color: white;
 	text-decoration: none;
 	display: block;
-	margin: 12px 0;
 }
 
 .index-title {
@@ -392,6 +391,7 @@ export default
 	pointer-events: auto;
 	cursor: pointer;
     position: relative;
+    padding: 6px 0;
 
     @media (max-width: $bp-size-md) {
         font-size: 38px;
