@@ -11,6 +11,8 @@
             <div class="hero-title">
                 {{ content.hero_text[0].text }}
             </div>
+            <!-- Background Shape -->
+            <img class="hero-shape" :src="content.background_shape.url" alt="" />
         </div>
 
         <!-- Slice Zone -->
@@ -108,7 +110,20 @@ export default
 //  ...
 ///////////////////////////////////////////////////////////
 
+.hero-shape {
+    position: absolute;
+    top: -355px;
+    left: -250px;
+    width: 100vw;
+    z-index: 0;
 
+    @media (max-width: $bp-size-md) {
+        position: absolute;
+        top: -12px;
+        left: -36px;
+        width: 84vw;
+    }
+}
 
 
 </style>
