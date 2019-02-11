@@ -79,6 +79,7 @@ export default
 		return {
 			"isShown" : false,
 			"isIndexShown" : false,
+			"isIndexImagesPreloaded" : false,
 			"backgroundImage" : null,
 			"hoverIndexTitle" : false,
 		}
@@ -137,7 +138,14 @@ export default
 		},
 
 		// Shows the index menu
-		showIndex () { this.isIndexShown = true; },
+		showIndex () 
+		{ 
+			// Preload images
+			this.preloadIndexImages();
+
+			// Show index
+			this.isIndexShown = true;
+		},
 
 		// Shows index item background image on hover
 		onIndexMouseover (item)
@@ -149,6 +157,25 @@ export default
 		onIndexMouseout (item)
 		{
 			this.hoverIndexTitle = false;
+		},
+
+		preloadIndexImages ()
+		{
+			// Bail if they're already preloaded
+			if( this.isIndexImagesPreloaded ) return;
+
+			// Prelaod each project's background image
+			let images = [];
+			this.indexLinks.forEach( (item, index) => 
+			{
+				// Prealod image
+				images[index] = new Image();
+				images[index].src = item.image;
+			});
+
+			// Set preloaded flag to true
+			this.isIndexImagesPreloaded = true;
+
 		},
 
 
