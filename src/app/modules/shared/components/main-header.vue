@@ -102,7 +102,7 @@ header {
 
 	transition-timing-function: $nav-animation-timing;
 	transition-duration: $nav-animation-duration;
-	transition-property: height, background, mix-blend-mode;
+	transition-property: height, background;
 
 	&.headroom--not-top
 	{
@@ -116,15 +116,19 @@ header {
 			svg
 			{
 				transform: scale(0.7) translateX(-10px);
+                fill: black;
 			}
-
-			// svg { fill: black; }
 		}
 
 		& + .menu-button
 		{
 			top: 14px;
 			transform: scale(0.7);
+		}
+
+        & + .menu-button .menu-line.-top, + .menu-button .menu-line.-bottom
+		{
+			background-color: black;
 		}
 
 		.white-bar
@@ -138,7 +142,6 @@ header {
 .header-wrapper
 {
 	padding: 0 50px;
-	mix-blend-mode: difference;
 
 	@media (max-width: $bp-size-md) {
 		padding: 0 25px;
@@ -176,6 +179,7 @@ header {
 .menu-button {
 
 	transition: transform $nav-animation-timing $nav-animation-duration,
+                top $nav-animation-timing $nav-animation-duration,
 				opacity $nav-animation-timing $nav-animation-duration !important;
 
 	padding: 0;
@@ -190,7 +194,6 @@ header {
 	z-index: 199;
 	background-color: transparent;
 	border: none;
-	mix-blend-mode: difference;
 
 	transition: top 0.25s ease-out;
 
@@ -240,11 +243,5 @@ header {
 	background-color: black;
 	transform: rotate(-45deg);
 }
-
-.menu-button.-active {
-	mix-blend-mode: unset;
-}
-
-
 
 </style>
