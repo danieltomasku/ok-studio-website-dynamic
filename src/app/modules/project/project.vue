@@ -3,7 +3,7 @@
 
         <div
             v-if="content"
-            :class="[content.theme_type === 'Dark' ? 'dark-theme' : 'light-theme' ]"
+            :class="[themeType === 'Dark' ? 'dark-theme' : 'light-theme' ]"
             :style="{ backgroundColor: backgroundColor }"
         >
 
@@ -157,6 +157,9 @@ export default
         {
             return ( this.shouldColorShift ) ? this.content.color_shift : this.content.project_color;
         },
+        themeType() {
+            return ( this.shouldColorShift ) ? this.content.color_shift_theme_type : this.content.theme_type;
+        }
     },
 }
 </script>
@@ -186,7 +189,6 @@ export default
     font-size: 70px;
     margin: 4px 0 0;
     font-weight: 300;
-    color: white;
 
     @media (max-width: $bp-size-md) {
         font-size: 50px;
