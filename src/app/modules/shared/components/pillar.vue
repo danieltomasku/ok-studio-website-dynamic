@@ -16,25 +16,38 @@
                     <p v-for="(richtext, index) in content.primary.rich_text" :key="index">{{ richtext.text }}</p>
                 </div>
 	    		<div
-                    :class="[content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3 four-up' : content.items.length === 3 ? 'col-4' : 'col-6 two-up', 'pad-8-top', 'col-tablet-12']"
+                    :class="['pillar-rich-text', content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3 four-up' : content.items.length === 3 ? 'col-4' : 'col-6 two-up', 'pad-8-top', 'col-tablet-12']"
                     v-for="(item, index) in content.items"
                     :key="index"
                 >
-                    <template v-for="(richtext, index) in item.column_body">
-                        <img v-if="richtext.type === 'image'" :src="richtext.url" class="pillar-image" :key="index" />
 
-                        <template v-else-if="richtext.spans[0]">
+                    <!-- Loop through column body -->
+                    <template v-for="(richtext, index) in item.column_body">
+
+                        <!-- Portrait Hover Image-->
+                        <img v-if="richtext.type === 'image' && isHoverImage(richtext)" :src="richtext.url" class="pillar-image image-off" :key="index" />
+
+                        <!-- Image-->
+                        <img v-else-if="richtext.type === 'image'" :src="richtext.url" class="pillar-image image-on" :key="index" />
+
+                        <!-- Link -->
+                        <template v-else-if="richtext.spans && richtext.spans[0]">
                             <div v-if="richtext.spans[0].type === 'hyperlink' " :key="index" class=" column-cta cta-wrapper">
                                 <prismic-link class="cta" :field="richtext.spans[0].data">{{ richtext.text }}</prismic-link>
                             </div>
                         </template>
 
+                        <!-- Heading -->
                         <h4 v-else-if="richtext.type === 'heading3'" :key="index" class="column-heading">
                             {{ richtext.text }}
                         </h4>
+
+                        <!-- List Item -->
                         <div v-else-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="column-body">
                             {{ richtext.text }}
                         </div>
+
+                        <!-- Ordered List Item -->
                         <ul v-else-if="richtext.type === 'o-list-item'" :key="index" class="column-body">
                             <li>{{index}}. {{ richtext.text }}</li>
                         </ul>
@@ -76,7 +89,11 @@ export default
 	// 	...
 	///////////////////////////////////////////////////////
 
-	"methods" : {},
+	"methods" : {
+        isHoverImage: function (item) {
+            return item.url && item.url.indexOf('-hover') !== -1;
+        }
+    },
 	"computed" : {},
 }
 </script>
@@ -123,6 +140,14 @@ export default
 	}
 }
 
+.pillar-rich-text .image-off, .pillar-rich-text:hover .image-off + .image-on {
+  display: none;
+}
+
+.pillar-rich-text .image-on, .pillar-rich-text:hover .image-off {
+  display: block;
+}
+
 .two-up {
     margin-bottom: 15px;
     padding: 0 5% 0 0;
@@ -146,6 +171,5 @@ export default
 .column-cta {
     margin-top: 50px;
 }
-
 
 </style>
