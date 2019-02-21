@@ -110,7 +110,6 @@ export default
   font-family: GTWalsheim, sans-serif;
   font-weight: 100;
   font-size: 18px;
-  color: white;
   text-align: center;
   margin: 35px 0;
 }
