@@ -7,6 +7,16 @@
             <section class="page-content">
                 <div class="page-intro">
                     <h1 class="col-12 h-text-center">
+                        <!-- {{content.body}} -->
+                        <div v-for="item in content.body">
+                            <div v-if="item.slice_type === 'emoji_interaction' ">
+                                <!-- {{item.items}} -->
+                                {{item.primary.words[0].text}}
+                                <div v-for="emojis in item.items">
+                                    <img :src="emojis.emoji.url" />
+                                </div>
+                            </div>
+                        </div>
                          <p>
                             <span class="char-wrapper">
                                 <span class="char-original show">OK</span>
