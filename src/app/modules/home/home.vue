@@ -11,10 +11,11 @@
                         <template v-for="(item, index) in content.body">
                             <template v-if="item.slice_type === 'emoji_interaction' ">
                                 <span v-if="item.items.length > 0" class="char-wrapper" :key="index" @mouseenter="handleCharMouseEnter($event)">
-                                    <span class="char-original show">{{item.primary.words[0].text}}&nbsp;</span>
+                                    <span class="char-original show">{{item.primary.words[0].text}}</span>
                                     <span class="char-emoji hide" v-for="(emojis, index) in item.items" :key="index"><img :src="emojis.emoji.url" /></span>
                                 </span>
-                                <span v-else :key="index">{{item.primary.words[0].text}}&nbsp;</span>
+                                <span v-else :key="index">{{item.primary.words[0].text}}</span>
+                                &#32;
                             </template>
                         </template>
                         </p>
