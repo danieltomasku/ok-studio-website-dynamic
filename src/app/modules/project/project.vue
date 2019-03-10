@@ -8,7 +8,7 @@
         >
 
             <div class="container">
-                <prismic-image :field="content.hero_image" class="project-hero" />
+                <prismic-image :field="content.hero_image" class="project-hero" :alt="content.hero_image.alt" />
             </div>
 
             <component
