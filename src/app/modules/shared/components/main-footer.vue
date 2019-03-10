@@ -14,7 +14,14 @@
     		<div class="col-3 col-tablet-12 footer-column">
 				<span class="footer-column-label">Follow</span><br/>
     			<div class="" v-for="item in content.social_links" :key="item.label">
-    				<a class="footer-link-item" target="_blank" :href="item.link.url">{{ item.label }}</a>
+    				<a
+                        class="footer-link-item"
+                        target="_blank"
+                        rel="noopener"
+                        :href="item.link.url"
+                    >
+                        {{ item.label }}
+                    </a>
     			</div>
     			<div class="pad-2-top">
 					<form method="POST" name="stay-updated" data-netlify="true" data-netlify-honeypot="bot-field">

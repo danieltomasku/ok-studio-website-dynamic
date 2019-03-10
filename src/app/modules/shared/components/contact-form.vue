@@ -5,12 +5,12 @@
 			<svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
 		</div>
 		<form method="POST" name="contact-form" data-netlify="true" data-netlify-honeypot="bot-field">
-			<input id="name" type="name" name="name">
-			<label for="name">Name</label>
-			<input id="email" type="email" name="email">
-			<label for="email">Email</label>
-			<textarea id="message" name="message"></textarea>
-			<label for="message">Message</label>
+			<input id="contact-name" type="name" name="name">
+			<label for="contact-name">Name</label>
+			<input id="contact-email" type="email" name="email">
+			<label for="contact-email">Email</label>
+			<textarea id="contact-message" name="message"></textarea>
+			<label for="contact-message">Message</label>
 			<button class="form-submit" type="submit">Submit</button>
 
 			<input type="hidden" name="bot-field" />

@@ -22,7 +22,7 @@
 					v-for="(item, index) in content.social_links"
 					:key="index"
 				>
-					<a :href="item.link.url" target="_blank">
+					<a :href="item.link.url" target="_blank" rel="noopener">
 						<prismic-image :field="item.icon" class="social-icons-item" />
 					</a>
 				</li>
