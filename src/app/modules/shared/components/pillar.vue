@@ -31,11 +31,27 @@
                         <img v-else-if="richtext.type === 'image'" :src="richtext.url" class="pillar-image image-on" :key="index" />
 
                         <!-- Link -->
-                        <template v-else-if="richtext.spans && richtext.spans[0]">
+                        <!-- Specificity needed to detect if link should look like a CTA -->
+                        <template
+                            v-else-if="
+                                richtext.spans &&
+                                richtext.spans[0] &&
+                                richtext.spans[0].type === 'hyperlink'&&
+                                richtext.spans[0].start === 0
+                            ">
                             <div v-if="richtext.spans[0].type === 'hyperlink' " :key="index" class=" column-cta cta-wrapper">
                                 <prismic-link class="cta" :field="richtext.spans[0].data">{{ richtext.text }}</prismic-link>
                             </div>
                         </template>
+<!-- 
+                        Since we are destructuring the rich-text, we need a way
+                        to show inline tags like bold, italic, etc.
+                        The logic here is to detect if there are rich text spans,
+                        and if there are, use the prismic-rich-text tag to handle parsing
+                        the rich text. -->
+                        <!-- <template v-else-if="richtext.spans && richtext.spans[0]">
+                            <prismic-rich-text class="section-description" :field="[richtext]" :key="index" />
+                        </template> -->
 
                         <!-- Heading -->
                         <h4 v-else-if="richtext.type === 'heading3'" :key="index" class="column-heading">
