@@ -6,42 +6,18 @@
             <!-- Home Intro -->
             <section class="page-content">
                 <div class="page-intro">
-                    <h1 class="col-12 h-text-center">
-                         <p>
-                            <span class="char-wrapper">
-                                <span class="char-original show">OK</span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-OK.svg"/></span>
-                            </span>
-                            <span>Studio is a</span>
-                            <span class="char-wrapper">
-                                <span class="char-original show">no</span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-No1.svg"/></span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-No2.svg"/></span>
-                            </span>
-                            <span class="char-wrapper">
-                                <span class="char-original show">bullshit,</span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-Bullshit3.svg"/></span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-Bullshit1.svg"/></span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-Bullshit2.svg"/></span>
-                            </span>
-                            <span>independent</span>
-                            <span class="char-wrapper">
-                                <span class="char-original show">creative</span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-Creative1.svg"/></span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-Creative2.svg"/></span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-Creative3.svg"/></span>
-                            </span>
-                            <span class="char-wrapper">
-                                <span class="char-original show">practice</span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-Practice.svg"/></span>
-                            </span>
-                            <span>based in</span>
-                            <span class="char-wrapper">
-                                <span class="char-original show">Portland,</span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-Portland1.svg"/></span>
-                                <span class="char-emoji hide"><img src="images/ok-emoji-Portland2.svg"/></span>
-                            </span>
-                            <span>Oregon.</span>
+                    <h1 class="col-12 h-text-center" v-if="content">
+                        <p>
+                        <template v-for="(item, index) in content.body">
+                            <template v-if="item.slice_type === 'emoji_interaction' ">
+                                <span v-if="item.items.length > 0" class="char-wrapper" :key="index" @mouseenter="handleCharMouseEnter($event)">
+                                    <span class="char-original show">{{item.primary.words[0].text}}</span>
+                                    <span class="char-emoji hide" v-for="(emojis, index) in item.items" :key="index"><img :src="emojis.emoji.url" /></span>
+                                </span>
+                                <span v-else :key="index">{{item.primary.words[0].text}}</span>
+                                &#32;
+                            </template>
+                        </template>
                         </p>
                     </h1>
 
@@ -92,83 +68,8 @@ export default
 
     "mounted": function()
     {
-        // EMOJI WORD REPLACEMENT
-        const allCharWrapper = Array.from(document.querySelectorAll('.char-wrapper'));
-        const allCharOriginal = Array.from(document.querySelectorAll('.char-original'));
-        const allCharEmoji = Array.from(document.querySelectorAll('.char-emoji'));
-
-        document.body.addEventListener('click', resetChars);
-
-        allCharWrapper.forEach((item) => {
-            item.addEventListener('mouseenter', function (event) {
-                handleMouseEnter(event);
-            });
-        });
-
-        function handleMouseEnter(event) {
-            var rand = Math.floor(Math.random() * (event.target.children.length - 1)) + 1;
-            if (event.target.children[0].classList.contains('show')) {
-                event.target.children[0].classList.add('hide');
-                event.target.children[0].classList.remove('show');
-                event.target.children[rand].classList.add('show');
-                event.target.children[rand].classList.remove('hide');
-            } else {
-                event.target.children[0].classList.add('show');
-                event.target.children[0].classList.remove('hide');
-                var allChildren = Array.from(event.target.children);
-                var removeEmojiList = allChildren.slice(1);
-
-                removeEmojiList.forEach(item => {
-                    item.classList.add('hide');
-                    item.classList.remove('show');
-                });
-            }
-
-            if (allCharEmoji.length === document.querySelectorAll('.char-emoji.show').length) {
-                allCharEmoji.forEach(item => {
-                    item.style.animation = 'wave 2s infinite';
-                });
-            } else {
-                allCharEmoji.forEach(item => {
-                    item.style.animation = '';
-                });
-            }
-        };
-
-        function autoPlayChars() {
-            var rand = Math.floor(Math.random() * allCharWrapper.length);
-            var randEmoji = Math.floor(Math.random() * (allCharWrapper[rand].children.length - 1)) + 1;
-
-            if (allCharWrapper[rand].children[0].classList.contains('show')) {
-                allCharWrapper[rand].children[0].classList.add('hide');
-                allCharWrapper[rand].children[0].classList.remove('show');
-                allCharWrapper[rand].children[randEmoji].classList.add('show');
-                allCharWrapper[rand].children[randEmoji].classList.remove('hide');
-            } else {
-                allCharWrapper[rand].children[0].classList.add('show');
-                allCharWrapper[rand].children[0].classList.remove('hide');
-                var allChildren = Array.from(allCharWrapper[rand].children);
-                var removeEmojiList = allChildren.slice(1);
-
-                removeEmojiList.forEach(item => {
-                    item.classList.add('hide');
-                    item.classList.remove('show');
-                });
-            }
-        }
-
-        function resetChars() {
-            allCharOriginal.forEach(item => {
-                item.classList.add('show');
-                item.classList.remove('hide');
-            });
-            allCharEmoji.forEach(item => {
-                item.classList.add('hide');
-                item.classList.remove('show');
-            });
-        }
-
-
+        // Clear emoji's on click
+        this.$el.addEventListener('click', this.resetChars);
     },
 
     "destroyed": function(){},
@@ -190,6 +91,51 @@ export default
                 if( error ) console.error( error );
                 // Assign content
                 this.content = response.data;                
+            });
+        },
+
+        handleCharMouseEnter(event) 
+        {
+            var rand = Math.floor(Math.random() * (event.target.children.length - 1)) + 1;
+
+            if (event.target.children[0].classList.contains('show')) {
+                event.target.children[0].classList.add('hide');
+                event.target.children[0].classList.remove('show');
+                event.target.children[rand].classList.add('show');
+                event.target.children[rand].classList.remove('hide');
+            } else {
+                event.target.children[0].classList.add('show');
+                event.target.children[0].classList.remove('hide');
+                var allChildren = Array.from(event.target.children);
+                var removeEmojiList = allChildren.slice(1);
+
+                removeEmojiList.forEach(item => {
+                    item.classList.add('hide');
+                    item.classList.remove('show');
+                });
+            }
+
+            let allCharEmoji = this.$el.querySelectorAll('.char-emoji');
+            if (allCharEmoji.length === document.querySelectorAll('.char-emoji.show').length) {
+                allCharEmoji.forEach(item => {
+                    item.style.animation = 'wave 2s infinite';
+                });
+            } else {
+                allCharEmoji.forEach(item => {
+                    item.style.animation = '';
+                });
+            }
+        },
+
+        resetChars() 
+        {
+            this.$el.querySelectorAll('.char-original').forEach(item => {
+                item.classList.add('show');
+                item.classList.remove('hide');
+            });
+            this.$el.querySelectorAll('.char-emoji').forEach(item => {
+                item.classList.add('hide');
+                item.classList.remove('show');
             });
         },
     },
