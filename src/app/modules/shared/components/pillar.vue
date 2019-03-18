@@ -48,7 +48,12 @@
                         to show inline tags like bold, italic, etc.
                         The logic here is to detect if there are rich text spans,
                         and if there are, use the prismic-rich-text tag to handle parsing
-                        the rich text. -->
+                        the rich text.
+                        
+                        And this actually works, however one of the cases it doesn't is when
+                        there is an ordered list because it doesn't know what order context the
+                        item is in.
+                         -->
                         <!-- <template v-else-if="richtext.spans && richtext.spans[0]">
                             <prismic-rich-text class="section-description" :field="[richtext]" :key="index" />
                         </template> -->
