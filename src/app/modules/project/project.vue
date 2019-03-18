@@ -138,7 +138,7 @@ export default
                     // Offset for main-nav height
                     let navOffset = 60;
                     // Return whether its "in view" or "scrolled past"
-                    sum = ( pos - margin - navOffset ) < 0;
+                    sum = ( pos - margin - navOffset + 140 ) < 0;
                 }
 
                 // Return sum

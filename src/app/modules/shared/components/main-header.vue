@@ -86,7 +86,7 @@ export default
 ///////////////////////////////////////////////////////////
 
 $nav-animation-timing: ease-out;
-$nav-animation-duration: 0.35s;
+$nav-animation-duration: 0.4s;
 
 header {
 	font-family: $font-family-base;
