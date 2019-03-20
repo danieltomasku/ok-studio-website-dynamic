@@ -60,17 +60,17 @@
 
                         <!-- Heading -->
                         <h4 v-else-if="richtext.type === 'heading3'" :key="index" class="column-heading">
-                            {{ richtext.text }}
+                            <span v-html="htmlForRichText(richtext)"/>
                         </h4>
 
                         <!-- List Item -->
                         <div v-else-if="richtext.type === 'list-item' || richtext.type === 'paragraph'" :key="index" class="column-body">
-                            {{ richtext.text }}
+                            <span v-html="htmlForRichText(richtext)"/>
                         </div>
 
                         <!-- Ordered List Item -->
                         <ul v-else-if="richtext.type === 'o-list-item'" :key="index" class="column-body">
-                            <li>{{index}}. {{ richtext.text }}</li>
+                            <li>{{index}}. <span v-html="htmlForRichText(richtext)"/></li>
                         </ul>
                     </template>
 	    		</div>
@@ -113,7 +113,23 @@ export default
 	"methods" : {
         isHoverImage: function (item) {
             return item.url && item.url.indexOf('-hover') !== -1;
-        }
+        },
+        htmlForRichText( richText ) {
+            // If no spans, then just return plain text
+            if( richText.spans.length == 0 ) return richText.text;
+            // Reduce to an array of HTML'd spans and non-spans
+            let html = richText.spans.reduce( (sum, span, i ) => {
+                // Create the HTML node from the span
+                sum.push( `<${span.type}>${richText.text.substring( span.start, span.end )}</${span.type}>` );
+                // Add the next non-span. It'll either be text until the next span or if last span then til the end of entire string
+                let nextEnd = ( i < richText.spans.length - 1 ) ? richText.spans[i+1].start : richText.text.length;
+                sum.push( richText.text.substring( span.end, nextEnd ) );
+                // Return newly appended array
+                return sum;
+            }, [] );
+            // Join HTML'd spans and non-spans together as one HTML string 
+            return html.join("");
+        },
     },
 	"computed" : {},
 }
