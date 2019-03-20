@@ -13,7 +13,7 @@
             <!-- Pillar Body -->
 	    	<div :class="[content.primary.full_width === 'Full Width' ? 'col-12' : 'col-8', 'container', 'col-tablet-12']">
                 <div class ="col-12" v-if="content.primary.rich_text">
-                    <p v-for="(richtext, index) in content.primary.rich_text" :key="index">{{ richtext.text }}</p>
+                    <p v-for="(richtext, index) in content.primary.rich_text" :key="index"><span v-html="htmlForRichText(richtext)"/></p>
                 </div>
 	    		<div
                     :class="['pillar-rich-text', content.primary.full_width === 'Full Width' && content.items.length === 4 ? 'col-3 four-up' : content.items.length === 3 ? 'col-4' : 'col-6 two-up', 'pad-8-top', 'col-tablet-12']"
@@ -120,7 +120,11 @@ export default
             // Reduce to an array of HTML'd spans and non-spans
             let html = richText.spans.reduce( (sum, span, i ) => {
                 // Create the HTML node from the span
-                sum.push( `<${span.type}>${richText.text.substring( span.start, span.end )}</${span.type}>` );
+                if (span.type === 'hyperlink') {
+                    sum.push( `<a href="${span.data.url}" target=${span.data.target}>${richText.text.substring( span.start, span.end )}</a>` );
+                } else {
+                    sum.push( `<${span.type}>${richText.text.substring( span.start, span.end )}</${span.type}>` );
+                }
                 // Add the next non-span. It'll either be text until the next span or if last span then til the end of entire string
                 let nextEnd = ( i < richText.spans.length - 1 ) ? richText.spans[i+1].start : richText.text.length;
                 sum.push( richText.text.substring( span.end, nextEnd ) );
@@ -209,4 +213,10 @@ export default
     margin-top: 50px;
 }
 
+</style>
+
+<style lang="scss">
+a {
+    text-decoration: underline;
+}
 </style>
