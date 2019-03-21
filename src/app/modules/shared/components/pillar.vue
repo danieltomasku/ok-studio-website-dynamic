@@ -43,20 +43,6 @@
                                 <prismic-link class="cta" :field="richtext.spans[0].data">{{ richtext.text }}</prismic-link>
                             </div>
                         </template>
-<!-- 
-                        Since we are destructuring the rich-text, we need a way
-                        to show inline tags like bold, italic, etc.
-                        The logic here is to detect if there are rich text spans,
-                        and if there are, use the prismic-rich-text tag to handle parsing
-                        the rich text.
-                        
-                        And this actually works, however one of the cases it doesn't is when
-                        there is an ordered list because it doesn't know what order context the
-                        item is in.
-                         -->
-                        <!-- <template v-else-if="richtext.spans && richtext.spans[0]">
-                            <prismic-rich-text class="section-description" :field="[richtext]" :key="index" />
-                        </template> -->
 
                         <!-- Heading -->
                         <h4 v-else-if="richtext.type === 'heading3'" :key="index" class="column-heading">
@@ -182,7 +168,7 @@ export default
 	}
 }
 
-.pillar-rich-text span {
+.pillar-wrapper p span {
     white-space: pre-line;
 }
 
@@ -216,6 +202,10 @@ export default
 
 .column-cta {
     margin-top: 50px;
+}
+
+.cta {
+    text-decoration: none;
 }
 
 </style>
