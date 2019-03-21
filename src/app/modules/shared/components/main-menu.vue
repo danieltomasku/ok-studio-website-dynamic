@@ -214,7 +214,7 @@ export default
 				{ "label" : "Index", 		"link" : null },
 				{ "label" : "About", 		"link" : "/about" },
 				{ "label" : "Workshops",	"link" : "/workshops" },
-				{ "label" : "Shop", 		"link" : "/shop" },
+				// { "label" : "Shop", 		"link" : "/shop" },
 			];
 		},
 
