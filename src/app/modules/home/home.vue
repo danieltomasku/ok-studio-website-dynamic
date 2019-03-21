@@ -269,12 +269,12 @@ export default
 /*End Emoji Word Replacement*/
 
 .say-hello {
-  font-family: GTWalsheim, sans-serif;
   font-size: 18px;
   margin: 64px 0;
   text-align: center;
   color: $color-text;
   display: block;
+  text-decoration: none;
 }
 
 .say-hello-arrow {
