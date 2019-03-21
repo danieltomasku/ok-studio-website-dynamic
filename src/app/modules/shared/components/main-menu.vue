@@ -212,7 +212,7 @@ export default
 			return [
 				{ "label" : "Home", 		"link" : "/" },
 				{ "label" : "Index", 		"link" : null },
-				{ "label" : "About", 		"link" : "/about-us" },
+				{ "label" : "About", 		"link" : "/about" },
 				{ "label" : "Workshops",	"link" : "/workshops" },
 				{ "label" : "Shop", 		"link" : "/shop" },
 			];

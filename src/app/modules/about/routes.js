@@ -6,7 +6,7 @@ import about from "@modules/about/about.vue";
 
 const routes =
 [
-	{ "path" : "/about-us/", "component" : about, "props": true },
+	{ "path" : "/about/", "component" : about, "props": true },
 ];
 
 ///////////////////////////////////////////////////////////
