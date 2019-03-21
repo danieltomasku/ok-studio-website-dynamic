@@ -132,7 +132,8 @@ export default
                 return sum;
             }, [] );
             // Join HTML'd spans and non-spans together as one HTML string 
-            return html.join("");
+            let beginning = richText.text.substring(0, richText.spans[0].start);
+            return beginning + html.join("");
         },
     },
 	"computed" : {},
@@ -181,6 +182,10 @@ export default
 	}
 }
 
+.pillar-rich-text span {
+    white-space: pre-line;
+}
+
 .pillar-rich-text .image-off, .pillar-rich-text:hover .image-off + .image-on {
   display: none;
 }
@@ -216,7 +221,7 @@ export default
 </style>
 
 <style lang="scss">
-a {
+.pillar-wrapper a {
     text-decoration: underline;
 }
 </style>
