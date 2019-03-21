@@ -128,12 +128,12 @@ export default
         	// Store the home's title as the default title
         	this.head.titleDefault = prismicMetaObject.title_home;
         	// If a pageTitle hasn't been assigned yet, use the default
-        	if( !this.head.title ) this.head.title = prismicMetaObject.title_home;
+            if( !this.head.title ) this.head.title = prismicMetaObject.title_home;
 
         	// Assign meta tags
+            this.head.meta.push( { "name"     : "description", 		"content" : prismicMetaObject.description } );
         	this.head.meta.push( { "property" : "og:title", 		"content" : prismicMetaObject.title } );
         	this.head.meta.push( { "property" : "og:site_name", 	"content" : prismicMetaObject.site_name } );
-        	this.head.meta.push( { "property" : "description", 		"content" : prismicMetaObject.description } );
         	this.head.meta.push( { "property" : "og:description",	"content" : prismicMetaObject.description } );
         	this.head.meta.push( { "property" : "og:url",			"content" : prismicMetaObject.url } );
         	this.head.meta.push( { "property" : "og:url",			"content" : prismicMetaObject.url } );

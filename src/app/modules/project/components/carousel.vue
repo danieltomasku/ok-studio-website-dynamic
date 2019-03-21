@@ -3,8 +3,12 @@
 		<div class="carousel-wrapper">
 			<p ref="status" class="carousel-status"></p>
 			<div ref="carousel" class="main-carousel" >
-				<div class="carousel-cell" v-for="item in content.items">
-					<prismic-image :field="item.image" class="carousel-image" />
+				<div
+                    class="carousel-cell"
+                    v-for="item in content.items"
+                    :key="item.image.url"
+                >
+					<prismic-image :field="item.image" class="carousel-image" :alt="item.image.alt" />
 				</div>
 			</div>
 		</div>

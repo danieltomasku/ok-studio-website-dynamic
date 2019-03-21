@@ -3,6 +3,7 @@
         <ul class="slides" v-if="content" ref="slides">
             <router-link
                 v-for="(item, index) in content"
+                :aria-label="'View Project ' + index"
                 :key="item.uid"
                 :to=" '/project/' + item.home_carousel_item.uid "
             >
@@ -26,7 +27,12 @@
 
         <!-- Slide Dots -->
         <ul class="slide-dots">
-        	<li :class="['slide-dot', { '-active' : index === currentSlideIndex } ]" v-for="(item, index) in numSlides" @click="onDotClick(index)"></li>
+        	<li
+                v-for="(item, index) in numSlides"
+                :class="['slide-dot', { '-active' : index === currentSlideIndex } ]"
+                :key="index"
+                @click="onDotClick(index)">
+            </li>
         </ul>
     </section>
 </template>
