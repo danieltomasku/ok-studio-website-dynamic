@@ -21,7 +21,7 @@ Vue.use( PrismicVue, {
 
 // Init Google Analytics
 Vue.use( VueAnalytics, {
-	id: 'UA-XXXXXXXXX-X',
+	id: 'UA-129305382-1',
 	router
 });
 
